@@ -1,6 +1,19 @@
-// Minimalist vanilla JS for Split-Screen Job Search Launcher with Gemini AI & Apify
-const APIFY_TOKEN = (window.ENV && window.ENV.APIFY_TOKEN) || "";
-const GEMINI_API_KEY = (window.ENV && window.ENV.GEMINI_API_KEY) || "";
+// RoleRadar - Multi-Platform Job Search & Intelligence Engine
+window.ENV = window.ENV || {};
+const STORAGE_KEY_APIFY = "roleRadar_apify_token";
+const STORAGE_KEY_GEMINI = "roleRadar_gemini_api_key";
+
+function getApifyToken() {
+  const local = localStorage.getItem(STORAGE_KEY_APIFY);
+  if (local && local.trim()) return local.trim();
+  return (window.ENV && window.ENV.APIFY_TOKEN) ? window.ENV.APIFY_TOKEN.trim() : "";
+}
+
+function getGeminiApiKey() {
+  const local = localStorage.getItem(STORAGE_KEY_GEMINI);
+  if (local && local.trim()) return local.trim();
+  return (window.ENV && window.ENV.GEMINI_API_KEY) ? window.ENV.GEMINI_API_KEY.trim() : "";
+}
 
 // Global job store - starts completely clean without dummy items
 // Platform Logo SVGs (All 5 platforms)
@@ -117,6 +130,31 @@ document.addEventListener("DOMContentLoaded", () => {
       fullQuery += " " + excludeTags.map(t => `NOT "${t}"`).join(" ");
     }
     return fullQuery;
+  }
+
+  function getPlatformQuery(platform) {
+    const kw = kwInput.value.trim();
+    const mustTags = getTags("chips-must");
+    const anyTags = getTags("chips-any");
+    const excludeTags = getTags("chips-exclude");
+
+    if (platform === "linkedin") {
+      return getConstructedQuery();
+    }
+
+    if (platform === "indeed" || platform === "google") {
+      let q = kw;
+      if (mustTags.length > 0) q += " " + mustTags.join(" ");
+      if (anyTags.length > 0) q += " (" + anyTags.join(" OR ") + ")";
+      if (excludeTags.length > 0) q += " " + excludeTags.map(t => `-${t}`).join(" ");
+      return q.trim();
+    }
+
+    // Glassdoor and ZipRecruiter - clean terms without boolean NOT operators
+    let q = kw;
+    if (mustTags.length > 0) q += " " + mustTags.join(" ");
+    if (anyTags.length > 0) q += " " + anyTags[0];
+    return q.trim();
   }
 
   function updateUrls() {
@@ -244,10 +282,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 2. GEMINI AI: Describe to AI Handler
   btnGenerateAi.addEventListener("click", async () => {
-    if (!GEMINI_API_KEY) {
+    const geminiKey = getGeminiApiKey();
+    if (!geminiKey) {
       aiStatusMsg.style.display = "block";
       aiStatusMsg.style.color = "#b91c1c";
-      aiStatusMsg.textContent = "Gemini API key missing. Please add it to config.js (see config.example.js)";
+      aiStatusMsg.textContent = "Google Gemini API key missing. Click 'API Keys' in the top bar to paste your key.";
+      if (typeof openSettingsModal === "function") openSettingsModal();
       return;
     }
 
@@ -280,7 +320,7 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
 }`;
 
     try {
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(geminiKey)}`;
       const payload = {
         contents: [
           {
@@ -443,8 +483,10 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
       return;
     }
 
-    if (!APIFY_TOKEN) {
-      showNotification("Apify API token missing. Please add it to config.js (see config.example.js)", "error");
+    const apifyToken = getApifyToken();
+    if (!apifyToken) {
+      showNotification("Apify API token missing. Click 'API Keys' in the top bar to paste your token.", "error");
+      if (typeof openSettingsModal === "function") openSettingsModal();
       return;
     }
 
@@ -460,63 +502,78 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
     showNotification(`Scraping ${totalLimit} jobs across ${selectedPlatforms.join(", ")}...`, "loading");
 
     try {
-      const perSourceLimit = Math.max(3, Math.ceil(totalLimit / selectedPlatforms.length));
-      let newFetchedJobs = [];
+      const perSourceLimit = Math.max(5, Math.ceil(totalLimit / selectedPlatforms.length));
+      showNotification(`Scraping across ${selectedPlatforms.join(", ")} in parallel...`, "loading");
 
-      // Scrape LinkedIn
+      const scrapeTasks = [];
+
+      // 1. LinkedIn
       if (isLinkedIn) {
-        showNotification(`Fetching from LinkedIn via Apify...`, "loading");
-        try {
-          const liJobs = await scrapeLinkedIn(urlLinkedIn.textContent, query, location, perSourceLimit);
-          newFetchedJobs = newFetchedJobs.concat(liJobs);
-        } catch (err) {
-          console.warn("LinkedIn scrape warning:", err);
-        }
+        scrapeTasks.push(
+          scrapeLinkedIn(urlLinkedIn.textContent, getPlatformQuery("linkedin"), location, perSourceLimit)
+            .then(res => ({ platform: "LinkedIn", jobs: res }))
+            .catch(err => {
+              console.warn("LinkedIn scrape error:", err);
+              return { platform: "LinkedIn", jobs: [] };
+            })
+        );
       }
 
-      // Scrape Indeed
+      // 2. Indeed
       if (isIndeed) {
-        showNotification(`Fetching from Indeed via Apify...`, "loading");
-        try {
-          const inJobs = await scrapeIndeed(query, location, perSourceLimit);
-          newFetchedJobs = newFetchedJobs.concat(inJobs);
-        } catch (err) {
-          console.warn("Indeed scrape warning:", err);
-        }
+        scrapeTasks.push(
+          scrapeIndeed(getPlatformQuery("indeed"), location, perSourceLimit)
+            .then(res => ({ platform: "Indeed", jobs: res }))
+            .catch(err => {
+              console.warn("Indeed scrape error:", err);
+              return { platform: "Indeed", jobs: [] };
+            })
+        );
       }
 
-      // Scrape Glassdoor
+      // 3. Glassdoor
       if (isGlassdoor) {
-        showNotification(`Fetching from Glassdoor via Apify...`, "loading");
-        try {
-          const gdJobs = await scrapeGlassdoor(query, location, perSourceLimit);
-          newFetchedJobs = newFetchedJobs.concat(gdJobs);
-        } catch (err) {
-          console.warn("Glassdoor scrape warning:", err);
-        }
+        scrapeTasks.push(
+          scrapeGlassdoor(getPlatformQuery("glassdoor"), location, perSourceLimit)
+            .then(res => ({ platform: "Glassdoor", jobs: res }))
+            .catch(err => {
+              console.warn("Glassdoor scrape error:", err);
+              return { platform: "Glassdoor", jobs: [] };
+            })
+        );
       }
 
-      // Scrape Google Jobs
+      // 4. Google Jobs
       if (isGoogle) {
-        showNotification(`Fetching from Google Jobs via Apify...`, "loading");
-        try {
-          const gjJobs = await scrapeGoogleJobs(query, location, perSourceLimit);
-          newFetchedJobs = newFetchedJobs.concat(gjJobs);
-        } catch (err) {
-          console.warn("Google Jobs scrape warning:", err);
-        }
+        scrapeTasks.push(
+          scrapeGoogleJobs(getPlatformQuery("google"), location, perSourceLimit)
+            .then(res => ({ platform: "Google Jobs", jobs: res }))
+            .catch(err => {
+              console.warn("Google Jobs scrape error:", err);
+              return { platform: "Google Jobs", jobs: [] };
+            })
+        );
       }
 
-      // Scrape ZipRecruiter
+      // 5. ZipRecruiter
       if (isZip) {
-        showNotification(`Fetching from ZipRecruiter via Apify...`, "loading");
-        try {
-          const zrJobs = await scrapeZipRecruiter(query, location, perSourceLimit);
-          newFetchedJobs = newFetchedJobs.concat(zrJobs);
-        } catch (err) {
-          console.warn("ZipRecruiter scrape warning:", err);
-        }
+        scrapeTasks.push(
+          scrapeZipRecruiter(getPlatformQuery("ziprecruiter"), location, perSourceLimit)
+            .then(res => ({ platform: "ZipRecruiter", jobs: res }))
+            .catch(err => {
+              console.warn("ZipRecruiter scrape error:", err);
+              return { platform: "ZipRecruiter", jobs: [] };
+            })
+        );
       }
+
+      const results = await Promise.all(scrapeTasks);
+      let newFetchedJobs = [];
+      results.forEach(r => {
+        if (r && Array.isArray(r.jobs)) {
+          newFetchedJobs = newFetchedJobs.concat(r.jobs);
+        }
+      });
 
       if (newFetchedJobs.length > 0) {
         if (appendMode) {
@@ -551,13 +608,15 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
   // Apify Scraper API Helpers
   async function scrapeLinkedIn(searchUrl, query, location, limit) {
     const actorId = "curious_coder~linkedin-jobs-scraper";
-    const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=240`;
+    const token = getApifyToken();
+    const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${encodeURIComponent(token)}&timeout=240`;
 
     const payload = {
       urls: [searchUrl],
-      limitPerSource: limit,
+      maxJobs: limit,
       maxItems: limit,
-      count: limit
+      count: limit,
+      limitPerSource: limit
     };
 
     const res = await fetch(endpoint, {
@@ -569,33 +628,41 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
     if (!res.ok) throw new Error(`Apify LinkedIn returned ${res.status}`);
     const data = await res.json();
 
-    return (data || []).map((j, i) => ({
-      id: String(j.id || `li-${Date.now()}-${i}`),
-      source: "LinkedIn",
-      title: j.title || "Untitled Role",
-      company: j.companyName || "Company",
-      location: j.location || location,
-      date: j.postedAt || "Recent",
-      url: j.link || j.jobUrl || j.applyUrl || j.url || "#",
-      salary: typeof j.salary === "string" ? j.salary : null,
-      description: j.descriptionText || j.description || "",
-      tags: [
-        j.location && j.location.toLowerCase().includes("remote") ? "Remote" : null,
-        j.employmentType,
-        j.seniorityLevel
-      ].filter(Boolean)
-    }));
+    return (data || []).map((j, i) => {
+      const desc = j.description || j.descriptionHtml || j.descriptionText || j.jobDescription || j.snippet || j.companyDescription || "";
+      const dateVal = j.postedDate || j.postedAgo || j.postedAt || "Recent";
+      const jobUrl = j.link || j.jobUrl || j.applyUrl || j.url || searchUrl;
+      return {
+        id: String(j.id || `li-${Date.now()}-${i}`),
+        source: "LinkedIn",
+        title: j.title || "Untitled Role",
+        company: j.companyName || j.company || "Company",
+        location: j.location || location,
+        date: dateVal,
+        url: jobUrl,
+        salary: typeof j.salary === "string" ? j.salary : (j.salary ? (j.salary.text || null) : null),
+        description: desc,
+        tags: [
+          (j.location && j.location.toLowerCase().includes("remote")) ? "Remote" : null,
+          j.employmentType,
+          j.seniorityLevel
+        ].filter(Boolean)
+      };
+    });
   }
 
   async function scrapeIndeed(query, location, limit) {
     const actorId = "curious_coder~indeed-scraper";
-    const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=240`;
+    const token = getApifyToken();
+    const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${encodeURIComponent(token)}&timeout=240`;
 
     const payload = {
       country: "us",
       query: query,
       location: location,
-      count: limit
+      maxItems: limit,
+      count: limit,
+      parseCompanyDetails: true
     };
 
     const res = await fetch(endpoint, {
@@ -608,26 +675,29 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
     const data = await res.json();
 
     return (data || []).map((j, i) => {
-      const cName = j.companyDetails && j.companyDetails.name ? j.companyDetails.name : (j.company || "Company");
+      const cName = j.company_name || (j.companyDetails && j.companyDetails.name) || j.company || "Company";
       let salaryStr = null;
       if (j.salary && j.salary.min) {
         salaryStr = j.salary.max ? `$${j.salary.min.toLocaleString()} - $${j.salary.max.toLocaleString()}` : `$${j.salary.min.toLocaleString()}`;
       } else if (typeof j.salary === "string") {
         salaryStr = j.salary;
       }
+      const desc = j.description || j.description_text || j.jobDescription || j.jobDescriptionHTML || j.snippet || "";
+      const jobUrl = j.url || j.external_apply_link || (j.viewJobLink ? `https://www.indeed.com${j.viewJobLink}` : (j.originalApplyUrl || "#"));
+      const dateVal = j.posted_date || j.relative_time || j.pubDate || "Recent";
 
       return {
-        id: String(j.id || `in-${Date.now()}-${i}`),
+        id: String(j.job_id || j.id || `in-${Date.now()}-${i}`),
         source: "Indeed",
         title: j.title || "Untitled Role",
         company: cName,
-        location: j.formattedLocation || j.location || location,
-        date: j.pubDate || "Recent",
-        url: j.originalApplyUrl || (j.viewJobLink ? `https://www.indeed.com${j.viewJobLink}` : "#"),
+        location: j.location || j.formattedLocation || location,
+        date: dateVal,
+        url: jobUrl,
         salary: salaryStr,
-        description: j.jobDescription || j.descriptionText || "",
+        description: desc,
         tags: [
-          (j.formattedLocation || location).toLowerCase().includes("remote") ? "Remote" : null,
+          ((j.location || j.formattedLocation || location).toLowerCase().includes("remote") || j.is_remote) ? "Remote" : null,
           salaryStr
         ].filter(Boolean)
       };
@@ -636,13 +706,15 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
 
   async function scrapeGlassdoor(query, location, limit) {
     const actorId = "curious_coder~glassdoor-jobs-scraper";
-    const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=240`;
+    const token = getApifyToken();
+    const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${encodeURIComponent(token)}&timeout=240`;
 
     const payload = {
-      keyword: query,
+      searchQueries: [query],
+      keywords: [query],
       location: location,
       maxItems: limit,
-      proxyCountry: "us"
+      includeDetails: true
     };
 
     const res = await fetch(endpoint, {
@@ -654,33 +726,40 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
     if (!res.ok) throw new Error(`Apify Glassdoor returned ${res.status}`);
     const data = await res.json();
 
-    return (data || []).map((j, i) => ({
-      id: String(j.id || `gd-${Date.now()}-${i}`),
-      source: "Glassdoor",
-      title: j.title || j.jobTitle || "Untitled Role",
-      company: j.companyName || j.employerName || (j.company && j.company.name) || "Company",
-      location: j.location || location,
-      date: j.postedAt || j.postedDate || "Recent",
-      url: j.link || j.jobUrl || j.url || `https://www.glassdoor.com/Job/jobs.htm?sc.keyword=${encodeURIComponent(query)}`,
-      salary: typeof j.salary === "string" ? j.salary : (j.salary ? j.salary.text : null),
-      description: j.description || j.jobDescription || j.descriptionText || "",
-      tags: [
-        (j.location || location).toLowerCase().includes("remote") ? "Remote" : null,
-        j.employmentType
-      ].filter(Boolean)
-    }));
+    return (data || []).map((j, i) => {
+      const desc = j.description || j.descriptionHtml || j.jobDescription || j.descriptionText || j.jobSummary || "";
+      return {
+        id: String(j.id || `gd-${Date.now()}-${i}`),
+        source: "Glassdoor",
+        title: j.title || j.jobTitle || "Untitled Role",
+        company: j.companyName || j.employerName || (j.company && j.company.name) || "Company",
+        location: j.location || location,
+        date: j.postedDate || j.postedAt || "Recent",
+        url: j.url || j.link || j.jobUrl || `https://www.glassdoor.com/Job/jobs.htm?sc.keyword=${encodeURIComponent(query)}`,
+        salary: typeof j.salary === "string" ? j.salary : (j.salary ? (j.salary.text || null) : null),
+        description: desc,
+        tags: [
+          ((j.location || location).toLowerCase().includes("remote") || j.isRemote) ? "Remote" : null,
+          j.employmentType
+        ].filter(Boolean)
+      };
+    });
   }
 
   async function scrapeGoogleJobs(query, location, limit) {
     const actorId = "johnvc~Google-Jobs-Scraper";
-    const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=240`;
+    const token = getApifyToken();
+    const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${encodeURIComponent(token)}&timeout=240`;
 
+    // Actor schema requires num_results to be >= 10
+    const count = Math.max(10, limit);
     const payload = {
       query: query,
       location: location,
       country: "us",
       language: "en",
-      num_results: limit,
+      num_results: count,
+      maxItems: count,
       max_pagination: 1
     };
 
@@ -706,6 +785,8 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
         dateStr = j.posted_at;
       }
 
+      const desc = j.description || j.job_description || j.snippet || (j.job_highlights ? JSON.stringify(j.job_highlights) : "") || "";
+
       return {
         id: String(j.id || `gj-${Date.now()}-${i}`),
         source: "Google Jobs",
@@ -715,7 +796,7 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
         date: dateStr,
         url: applyLink || `https://www.google.com/search?q=${encodeURIComponent(query + ' jobs ' + location)}&ibp=htl;jobs`,
         salary: (j.detected_extensions && j.detected_extensions.salary) || j.salary || null,
-        description: j.description || "",
+        description: desc,
         tags: [
           (j.location && j.location.toLowerCase().includes("remote")) ? "Remote" : null,
           j.via
@@ -726,12 +807,14 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
 
   async function scrapeZipRecruiter(query, location, limit) {
     const actorId = "memo23~apify-ziprecruiter-scraper";
-    const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=240`;
+    const token = getApifyToken();
+    const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${encodeURIComponent(token)}&timeout=240`;
 
     const payload = {
       searchJobKeyword: query,
       searchLocation: location,
-      maxItems: limit
+      maxItems: limit,
+      scrapeJobDetails: true
     };
 
     const res = await fetch(endpoint, {
@@ -743,21 +826,24 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
     if (!res.ok) throw new Error(`Apify ZipRecruiter returned ${res.status}`);
     const data = await res.json();
 
-    return (data || []).map((j, i) => ({
-      id: String(j.id || `zr-${Date.now()}-${i}`),
-      source: "ZipRecruiter",
-      title: j.title || j.jobTitle || "Untitled Role",
-      company: j.hiringCompany || j.company || "Company",
-      location: j.location || location,
-      date: j.postedDate || "Recent",
-      url: j.jobUrl || j.url || j.link || `https://www.ziprecruiter.com/jobs-search?search=${encodeURIComponent(query)}&location=${encodeURIComponent(location)}`,
-      salary: j.salary || null,
-      description: j.jobDescription || j.jobSnippet || j.description || "",
-      tags: [
-        (j.location || location).toLowerCase().includes("remote") ? "Remote" : null,
-        j.employmentType
-      ].filter(Boolean)
-    }));
+    return (data || []).map((j, i) => {
+      const desc = j.job_description || j.description || j.job_snippet || j.snippet || j.body || "";
+      return {
+        id: String(j.id || `zr-${Date.now()}-${i}`),
+        source: "ZipRecruiter",
+        title: j.title || j.job_title || "Untitled Role",
+        company: j.company || j.company_name || j.hiring_company_name || "Company",
+        location: j.location || location,
+        date: j.posted_time || j.posted_at || "Recent",
+        url: j.url || j.job_url || "#",
+        salary: j.salary || j.salary_source || null,
+        description: desc,
+        tags: [
+          (j.location || location).toLowerCase().includes("remote") ? "Remote" : null,
+          j.employment_type
+        ].filter(Boolean)
+      };
+    });
   }
 
   function showNotification(msg, type) {
@@ -902,7 +988,147 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
   window.selectJob = selectJob;
   window.updateUrls = updateUrls;
 
+  // Settings Modal Elements & Handlers
+  const btnOpenSettings = document.getElementById("btn-open-apikeys") || document.getElementById("btn-open-settings");
+  const settingsModal = document.getElementById("settings-modal");
+  const btnCloseSettings = document.getElementById("btn-close-settings");
+  const btnCancelSettings = document.getElementById("btn-cancel-settings");
+  const btnSaveSettings = document.getElementById("btn-save-settings");
+  const btnClearSettings = document.getElementById("btn-clear-settings");
+  const inputApifyToken = document.getElementById("setting-apify-token");
+  const inputGeminiKey = document.getElementById("setting-gemini-key");
+  const statusApify = document.getElementById("status-apify");
+  const statusGemini = document.getElementById("status-gemini");
+  const settingsAlert = document.getElementById("settings-alert");
+
+  function updateSettingsStatus() {
+    const apifyToken = getApifyToken();
+    const geminiKey = getGeminiApiKey();
+
+    if (statusApify) {
+      if (apifyToken) {
+        statusApify.textContent = "CONFIGURED";
+        statusApify.className = "key-status-badge configured";
+      } else {
+        statusApify.textContent = "NOT SET";
+        statusApify.className = "key-status-badge unset";
+      }
+    }
+
+    if (statusGemini) {
+      if (geminiKey) {
+        statusGemini.textContent = "CONFIGURED";
+        statusGemini.className = "key-status-badge configured";
+      } else {
+        statusGemini.textContent = "NOT SET";
+        statusGemini.className = "key-status-badge unset";
+      }
+    }
+  }
+
+  function openSettingsModal() {
+    if (!settingsModal) return;
+    if (inputApifyToken) inputApifyToken.value = getApifyToken();
+    if (inputGeminiKey) inputGeminiKey.value = getGeminiApiKey();
+    if (settingsAlert) settingsAlert.style.display = "none";
+    updateSettingsStatus();
+    settingsModal.style.display = "flex";
+    if (inputApifyToken && !inputApifyToken.value) {
+      inputApifyToken.focus();
+    } else if (inputGeminiKey && !inputGeminiKey.value) {
+      inputGeminiKey.focus();
+    }
+  }
+
+  function closeSettingsModal() {
+    if (!settingsModal) return;
+    settingsModal.style.display = "none";
+    if (settingsAlert) settingsAlert.style.display = "none";
+  }
+
+  function saveSettings() {
+    const apifyVal = inputApifyToken ? inputApifyToken.value.trim() : "";
+    const geminiVal = inputGeminiKey ? inputGeminiKey.value.trim() : "";
+
+    if (apifyVal) {
+      localStorage.setItem(STORAGE_KEY_APIFY, apifyVal);
+    } else {
+      localStorage.removeItem(STORAGE_KEY_APIFY);
+    }
+
+    if (geminiVal) {
+      localStorage.setItem(STORAGE_KEY_GEMINI, geminiVal);
+    } else {
+      localStorage.removeItem(STORAGE_KEY_GEMINI);
+    }
+
+    updateSettingsStatus();
+
+    if (settingsAlert) {
+      settingsAlert.className = "window-alert success";
+      settingsAlert.textContent = "API credentials saved to browser storage.";
+      settingsAlert.style.display = "flex";
+    }
+
+    setTimeout(() => {
+      closeSettingsModal();
+    }, 600);
+  }
+
+  function clearSettings() {
+    if (confirm("Clear your saved API keys from browser storage?")) {
+      localStorage.removeItem(STORAGE_KEY_APIFY);
+      localStorage.removeItem(STORAGE_KEY_GEMINI);
+      if (inputApifyToken) inputApifyToken.value = "";
+      if (inputGeminiKey) inputGeminiKey.value = "";
+      updateSettingsStatus();
+      if (settingsAlert) {
+        settingsAlert.className = "window-alert success";
+        settingsAlert.textContent = "Saved credentials cleared.";
+        settingsAlert.style.display = "flex";
+      }
+    }
+  }
+
+  // Password visibility toggle buttons
+  document.querySelectorAll(".btn-toggle-visibility").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      const targetInput = document.getElementById(targetId);
+      if (!targetInput) return;
+      if (targetInput.type === "password") {
+        targetInput.type = "text";
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`;
+      } else {
+        targetInput.type = "password";
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
+      }
+    });
+  });
+
+  if (btnOpenSettings) btnOpenSettings.addEventListener("click", openSettingsModal);
+  if (btnCloseSettings) btnCloseSettings.addEventListener("click", closeSettingsModal);
+  if (btnCancelSettings) btnCancelSettings.addEventListener("click", closeSettingsModal);
+  if (btnSaveSettings) btnSaveSettings.addEventListener("click", saveSettings);
+  if (btnClearSettings) btnClearSettings.addEventListener("click", clearSettings);
+
+  if (settingsModal) {
+    settingsModal.addEventListener("click", (e) => {
+      if (e.target === settingsModal) closeSettingsModal();
+    });
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && settingsModal && settingsModal.style.display !== "none") {
+      closeSettingsModal();
+    }
+  });
+
+  window.openSettingsModal = openSettingsModal;
+  window.closeSettingsModal = closeSettingsModal;
+
   // Initial setup
+  updateSettingsStatus();
   updateUrls();
   renderJobs();
 });
@@ -982,7 +1208,7 @@ function selectJob(jobId) {
 
   // Full Job Description - Render Markdown & Lists
   const descEl = document.getElementById("detail-description");
-  descEl.innerHTML = formatJobDescription(job.description);
+  descEl.innerHTML = formatJobDescription(job.description, job);
 }
 
 // Format timestamps or date strings into readable format
@@ -1018,6 +1244,31 @@ function decodeHtmlEntities(str) {
     .replace(/&nbsp;/g, " ");
 }
 
+function sanitizeHtml(htmlStr) {
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlStr, "text/html");
+    const unsafe = doc.querySelectorAll("script, style, iframe, object, embed, form, input, button, applet");
+    unsafe.forEach(el => el.remove());
+    const all = doc.body.querySelectorAll("*");
+    all.forEach(el => {
+      for (let i = el.attributes.length - 1; i >= 0; i--) {
+        const attr = el.attributes[i];
+        if (attr.name.startsWith("on") || (attr.name === "href" && attr.value.trim().toLowerCase().startsWith("javascript:"))) {
+          el.removeAttribute(attr.name);
+        }
+      }
+      if (el.tagName.toLowerCase() === "a") {
+        el.setAttribute("target", "_blank");
+        el.setAttribute("rel", "noopener noreferrer");
+      }
+    });
+    return doc.body.innerHTML;
+  } catch (e) {
+    return escapeHtml(htmlStr);
+  }
+}
+
 function isHeaderLine(trimmed, nextTrimmed) {
   if (!trimmed || trimmed.length > 75) return false;
   if (/^([-*+•–—\d]|\u2022|\u2013|\u2014)/.test(trimmed)) return false;
@@ -1047,23 +1298,46 @@ function isListHeading(trimmed) {
   return /\b(responsibilities|qualifications|requirements|skills|attributes|competencies|duties|benefits|perks|indicators|what\s+you\s+will\s+do|what\s+you\s+bring)\b/i.test(trimmed);
 }
 
-function formatJobDescription(raw) {
-  if (!raw) return '<p>No job description text provided.</p>';
+function formatJobDescription(raw, job) {
+  if (!raw || !String(raw).trim()) {
+    const jobUrl = (job && job.url && job.url !== "#") ? job.url : null;
+    const source = (job && job.source) ? job.source : "the source platform";
+    return `
+      <div class="empty-desc-card">
+        <div class="empty-desc-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <span class="empty-desc-title">Description Preview Not In API Response</span>
+        </div>
+        <p class="empty-desc-text">
+          ${escapeHtml(source)} did not return the full description text in this API preview batch.
+          You can inspect the full description, qualifications, and apply directly on the official site:
+        </p>
+        ${jobUrl ? `<a href="${jobUrl}" target="_blank" rel="noopener" class="btn-empty-desc-action">
+          Open Full Job on ${escapeHtml(source)} &rarr;
+        </a>` : ""}
+      </div>
+    `;
+  }
 
   let text = String(raw).trim();
 
-  // If text has HTML tags, check if it has structured tags like <p>, <ul>, <li>, <h3>
-  const hasFullHtml = /<\s*(p|ul|ol|li|h[1-6]|div)\b[^>]*>/i.test(text);
+  // Decode common HTML entities first so we can properly inspect contents
+  text = decodeHtmlEntities(text);
+
+  // If text contains rich HTML tags, sanitize and render cleanly
+  const hasFullHtml = /<\s*(p|ul|ol|li|h[1-6]|div|br|span|section|article)\b[^>]*>/i.test(text);
   if (hasFullHtml) {
-    return decodeHtmlEntities(text);
+    return sanitizeHtml(text);
   }
 
-  // Normalize <br> or <br/> or <p> tags into newlines for clean parsing
+  // Normalize any stray <br> or <p> tags into newlines for clean parsing
   text = text.replace(/<\s*br\s*\/?>/gi, "\n");
   text = text.replace(/<\/\s*p\s*>/gi, "\n\n");
   text = text.replace(/<\s*p\b[^>]*>/gi, "");
-
-  text = decodeHtmlEntities(text);
 
   const lines = text.split(/\r?\n/);
   const output = [];
