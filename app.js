@@ -847,7 +847,7 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
           <div class="job-item-company">${escapeHtml(job.company)} · ${escapeHtml(job.location)}</div>
           <div class="job-item-meta">
             ${salaryHtml}
-            <span class="job-item-date">${escapeHtml(job.date || "Recent")}</span>
+            <span class="job-item-date">${escapeHtml(formatDate(job.date))}</span>
             <a href="${escapeHtml(job.url || "#")}" target="_blank" rel="noopener" class="job-item-ext-link" onclick="event.stopPropagation()" title="Open posting in new tab">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -955,7 +955,7 @@ function selectJob(jobId) {
   const isRemote = (job.location || "").toLowerCase().includes("remote") || (job.description || "").toLowerCase().includes("remote");
   worktypeEl.textContent = isRemote ? "Remote" : "On-site / Hybrid";
 
-  document.getElementById("detail-date").textContent = job.date || "Recent";
+  document.getElementById("detail-date").textContent = formatDate(job.date);
 
   // Action Buttons
   const applyBtn = document.getElementById("detail-apply-btn");
@@ -985,6 +985,26 @@ function selectJob(jobId) {
   descEl.innerHTML = formatJobDescription(job.description);
 }
 
+// Format timestamps or date strings into readable format
+function formatDate(val) {
+  if (!val) return "Recent";
+  if (typeof val === "number" || (/^\d{10,13}$/.test(String(val).trim()))) {
+    const ms = Number(val);
+    const d = new Date(ms);
+    if (!isNaN(d.getTime())) {
+      return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    }
+  }
+  const str = String(val).trim();
+  if (str.includes("-") || str.includes("/")) {
+    const d = new Date(str);
+    if (!isNaN(d.getTime())) {
+      return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    }
+  }
+  return str;
+}
+
 // Markdown & Job Description Formatter
 function decodeHtmlEntities(str) {
   if (!str) return "";
@@ -1001,14 +1021,15 @@ function decodeHtmlEntities(str) {
 function isHeaderLine(trimmed, nextTrimmed) {
   if (!trimmed || trimmed.length > 75) return false;
   if (/^([-*+•–—\d]|\u2022|\u2013|\u2014)/.test(trimmed)) return false;
-  if (trimmed.endsWith(".") || trimmed.endsWith(",")) return false;
+  if (trimmed.endsWith(".") && !trimmed.endsWith("...")) return false;
+  if (trimmed.endsWith(",")) return false;
 
   if (/^(#{1,6})\s+/.test(trimmed)) return true;
   if (/^\*\*.*?\*\*:?$/.test(trimmed)) return true;
   if (trimmed.endsWith(":")) return true;
   if (/^[A-Z0-9\s,&/–—\-:]+$/.test(trimmed) && trimmed.replace(/[^A-Z]/g, "").length >= 3) return true;
 
-  const keywords = /\b(accountabilities|responsibilities|qualifications|requirements|skills|attributes|competencies|about\s+us|about\s+the|what\s+you|who\s+you|what\s+we|overview|summary|benefits|perks|duties|experience|education|stack|technologies|who\s+we\s+are)\b/i;
+  const keywords = /\b(accountabilities|responsibilities|qualifications|requirements|skills|attributes|competencies|about\s+us|about\s+the|what\s+you|who\s+you|what\s+we|overview|summary|benefits|perks|duties|experience|education|stack|technologies|who\s+we\s+are|what\s+success\s+looks\s+like|key\s+indicators)\b/i;
   if (keywords.test(trimmed)) return true;
 
   if (nextTrimmed !== undefined) {
@@ -1022,15 +1043,25 @@ function isHeaderLine(trimmed, nextTrimmed) {
   return false;
 }
 
+function isListHeading(trimmed) {
+  return /\b(responsibilities|qualifications|requirements|skills|attributes|competencies|duties|benefits|perks|indicators|what\s+you\s+will\s+do|what\s+you\s+bring)\b/i.test(trimmed);
+}
+
 function formatJobDescription(raw) {
   if (!raw) return '<p>No job description text provided.</p>';
 
   let text = String(raw).trim();
 
-  const hasHtml = /<\s*(p|ul|ol|li|br|div|h[1-6]|b|strong)\b[^>]*>/i.test(text);
-  if (hasHtml) {
+  // If text has HTML tags, check if it has structured tags like <p>, <ul>, <li>, <h3>
+  const hasFullHtml = /<\s*(p|ul|ol|li|h[1-6]|div)\b[^>]*>/i.test(text);
+  if (hasFullHtml) {
     return decodeHtmlEntities(text);
   }
+
+  // Normalize <br> or <br/> or <p> tags into newlines for clean parsing
+  text = text.replace(/<\s*br\s*\/?>/gi, "\n");
+  text = text.replace(/<\/\s*p\s*>/gi, "\n\n");
+  text = text.replace(/<\s*p\b[^>]*>/gi, "");
 
   text = decodeHtmlEntities(text);
 
@@ -1039,11 +1070,12 @@ function formatJobDescription(raw) {
   let inList = false;
   let listType = "ul";
   let currentParagraph = [];
+  let underListSection = false;
 
   function flushParagraph() {
     if (currentParagraph.length > 0) {
-      const pText = currentParagraph.join("<br>");
-      output.push(`<p>${formatInline(pText)}</p>`);
+      const pText = currentParagraph.map(formatInline).join("<br>");
+      output.push(`<p>${pText}</p>`);
       currentParagraph = [];
     }
   }
@@ -1075,15 +1107,18 @@ function formatJobDescription(raw) {
       continue;
     }
 
+    // Markdown Headers: # Header
     const headerMatch = trimmed.match(/^(#{1,6})\s+(.*)$/);
     if (headerMatch) {
       flushParagraph();
       flushList();
+      underListSection = isListHeading(headerMatch[2]);
       const level = Math.min(6, headerMatch[1].length + 1);
       output.push(`<h${level} class="jd-section-title">${formatInline(headerMatch[2])}</h${level}>`);
       continue;
     }
 
+    // Bullet List Items: - item, * item, + item, • item, – item, — item
     const bulletMatch = trimmed.match(/^([-*+•–—]|\u2022|\u2013|\u2014)\s+(.*)$/);
     if (bulletMatch) {
       flushParagraph();
@@ -1097,6 +1132,7 @@ function formatJobDescription(raw) {
       continue;
     }
 
+    // Numbered List Items: 1. item, 2. item
     const numMatch = trimmed.match(/^(\d+)[.)]\s+(.*)$/);
     if (numMatch) {
       flushParagraph();
@@ -1110,14 +1146,30 @@ function formatJobDescription(raw) {
       continue;
     }
 
+    // Section Heading Check
     if (isHeaderLine(trimmed, nextTrimmed)) {
       flushParagraph();
       flushList();
+      underListSection = isListHeading(trimmed);
       const cleanHeader = trimmed.replace(/^\*\*|\*\*$/g, "").trim();
       output.push(`<h4 class="jd-section-title">${formatInline(cleanHeader)}</h4>`);
       continue;
     }
 
+    // If under a list section (like "Key Responsibilities", "Minimum Qualifications"), treat standalone lines as list items
+    if (underListSection && trimmed.length < 250 && !trimmed.endsWith(":")) {
+      flushParagraph();
+      if (!inList || listType !== "ul") {
+        flushList();
+        output.push('<ul class="jd-bullet-list">');
+        inList = true;
+        listType = "ul";
+      }
+      output.push(`<li>${formatInline(trimmed)}</li>`);
+      continue;
+    }
+
+    // Indented continuation of previous list item
     if (inList && /^\s{2,}/.test(rawLine)) {
       const lastIndex = output.length - 1;
       if (output[lastIndex].endsWith("</li>")) {
