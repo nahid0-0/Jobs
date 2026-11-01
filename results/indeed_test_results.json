@@ -1,0 +1,1133 @@
+[
+  {
+    "salary": {
+      "max": 100000,
+      "min": 85000,
+      "type": "YEAR",
+      "currencyCode": "USD"
+    },
+    "id": "42f8d147312bc672",
+    "companyDetails": {
+      "name": "Enlyte",
+      "reviewCount": 444,
+      "rating": 3,
+      "ceoName": "Alex Sun",
+      "ceoPhotoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_ceophoto/512x512/e5ed075b7e631183b5c7a8a3cd4c2358",
+      "industry": null,
+      "sectorNames": [],
+      "employeeRange": "5,001 to 10,000",
+      "revenue": "$1B to $5B (USD)",
+      "headquartersLocation": {
+        "address": "9771 Clairemont Mesa Blvd, Suite A,\r\nSan Diego, CA 92124"
+      },
+      "websiteUrl": "https://www.enlyte.com/",
+      "headerImageUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_headerimage/1960x400/a36c4b2f45aa99eac0a2fd3ca8f4b46b",
+      "logoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_logo/f7095e985e51cf3f8ffae38696ead6b3"
+    },
+    "viewJobLink": "/viewjob?jk=42f8d147312bc672",
+    "companyOverviewLink": "https://www.indeed.com/cmp/Enlyte",
+    "expirationDate": null,
+    "expired": false,
+    "benefits": [
+      {
+        "key": "7KV6C",
+        "label": "Health savings account"
+      },
+      {
+        "key": "9TE9M",
+        "label": "AD&D insurance"
+      },
+      {
+        "key": "EY33Q",
+        "label": "Health insurance"
+      },
+      {
+        "key": "FQJ2X",
+        "label": "Dental insurance"
+      },
+      {
+        "key": "G85UP",
+        "label": "Flexible spending account"
+      },
+      {
+        "key": "HJUWZ",
+        "label": "Tuition reimbursement"
+      },
+      {
+        "key": "RZAT2",
+        "label": "Vision insurance"
+      }
+    ],
+    "attributes": [
+      {
+        "key": "22JPW",
+        "label": "AI models"
+      },
+      {
+        "key": "487K4",
+        "label": "Doctoral degree in statistics"
+      },
+      {
+        "key": "4KV6M",
+        "label": "AI use case identification"
+      },
+      {
+        "key": "5ZMCH",
+        "label": "Data Integration (Data management)"
+      },
+      {
+        "key": "6KR63",
+        "label": "Statistics"
+      },
+      {
+        "key": "6XNCP",
+        "label": "Computer Science"
+      },
+      {
+        "key": "7G8UN",
+        "label": "SQL databases"
+      },
+      {
+        "key": "7KV6C",
+        "label": "Health savings account"
+      },
+      {
+        "key": "89FH5",
+        "label": "Automation"
+      },
+      {
+        "key": "9TE9M",
+        "label": "AD&D insurance"
+      },
+      {
+        "key": "AUZAS",
+        "label": "Presentations for conferences or internal meetings"
+      },
+      {
+        "key": "C43KF",
+        "label": "Amazon SageMaker"
+      },
+      {
+        "key": "C4D5Z",
+        "label": "Generative models"
+      },
+      {
+        "key": "CF3CP",
+        "label": "Full-time"
+      },
+      {
+        "key": "CK39H",
+        "label": "Mathematics"
+      },
+      {
+        "key": "DP8RP",
+        "label": "AI platforms (beyond public GPTs)"
+      },
+      {
+        "key": "DSQF7",
+        "label": "Remote"
+      },
+      {
+        "key": "EV2FP",
+        "label": "Prompt engineering"
+      },
+      {
+        "key": "EY33Q",
+        "label": "Health insurance"
+      },
+      {
+        "key": "FGY89",
+        "label": "SQL"
+      },
+      {
+        "key": "FQJ2X",
+        "label": "Dental insurance"
+      },
+      {
+        "key": "FSC5T",
+        "label": "Doctoral degree in Computer Science"
+      },
+      {
+        "key": "G7SAP",
+        "label": "Technical solutions implementation"
+      },
+      {
+        "key": "G85UP",
+        "label": "Flexible spending account"
+      },
+      {
+        "key": "GEJ6R",
+        "label": "Machine learning cloud services"
+      },
+      {
+        "key": "GEYN2",
+        "label": "Collaboration with product development teams"
+      },
+      {
+        "key": "GGXEU",
+        "label": "Analysis skills"
+      },
+      {
+        "key": "GUHBD",
+        "label": "Machine intelligence"
+      },
+      {
+        "key": "HDVV7",
+        "label": "Presentation skills"
+      },
+      {
+        "key": "HJUWZ",
+        "label": "Tuition reimbursement"
+      },
+      {
+        "key": "HWHBM",
+        "label": "Ph.D. in statistics"
+      },
+      {
+        "key": "HZH4X",
+        "label": "Doctor of Philosophy"
+      },
+      {
+        "key": "J2ANE",
+        "label": "Model deployment"
+      },
+      {
+        "key": "K45QU",
+        "label": "Master of Science"
+      },
+      {
+        "key": "M9XDE",
+        "label": "Developing large-scale AI models"
+      },
+      {
+        "key": "N24DX",
+        "label": "Master's degree in statistics"
+      },
+      {
+        "key": "PYTWK",
+        "label": "Scalability"
+      },
+      {
+        "key": "QBCKG",
+        "label": "Master's degree in mathematics"
+      },
+      {
+        "key": "RKJPU",
+        "label": "Master's degree in computer science"
+      },
+      {
+        "key": "RZAT2",
+        "label": "Vision insurance"
+      },
+      {
+        "key": "T72XD",
+        "label": "1 year"
+      },
+      {
+        "key": "VGR92",
+        "label": "Research findings presentation"
+      },
+      {
+        "key": "VXPK2",
+        "label": "Model evaluation"
+      },
+      {
+        "key": "WSBNK",
+        "label": "Communication skills"
+      },
+      {
+        "key": "WZ42A",
+        "label": "Project stakeholder communication"
+      },
+      {
+        "key": "X62BT",
+        "label": "Python"
+      },
+      {
+        "key": "XTCTW",
+        "label": "MLOps"
+      },
+      {
+        "key": "Y2Y89",
+        "label": "Feature engineering"
+      },
+      {
+        "key": "Y4JG9",
+        "label": "Entry level"
+      },
+      {
+        "key": "Y6B2U",
+        "label": "Generative AI"
+      },
+      {
+        "key": "Y8657",
+        "label": "Cross-functional communication"
+      }
+    ],
+    "language": "en",
+    "occupations": [
+      {
+        "key": "6D2D2",
+        "label": "Data & Database Occupations"
+      },
+      {
+        "key": "EHPW9",
+        "label": "Technology Occupations"
+      },
+      {
+        "key": "U3FAJ",
+        "label": "Data Scientists & Statisticians"
+      }
+    ],
+    "socialInsurance": [
+      {
+        "key": "EY33Q",
+        "label": "Health insurance"
+      }
+    ],
+    "formattedLocation": "Remote",
+    "highVolumeHiring": false,
+    "jobLocationCity": "Remote",
+    "jobTypes": [
+      "Full-time"
+    ],
+    "newJob": false,
+    "pubDate": 1790312400000,
+    "title": "Junior Data Scientist",
+    "urgentlyHiring": false,
+    "jobDescription": "Company Overview:\n\nAt Enlyte, we combine innovative technology, clinical expertise, and human compassion to help people recover after workplace injuries or auto accidents. We support their journey back to health and wellness through our industry-leading solutions and services. Whether you're supporting a Fortune 500 client or a local business, developing cutting-edge technology, or providing clinical services you'll work alongside dedicated professionals who share your commitment to excellence and make a meaningful impact. Join us in fueling our mission to protect dreams and restore lives, while building your career in an environment that values collaboration, innovation, and personal growth.\n\nBe part of a team that makes a real difference.\n\nJob Description :\n\nThis is a full-time remote position that can be located anywhere in the U.S.\n\nMitchell is looking for a Data Scientist to identify and deliver AI/ML opportunities across our product portfolio. You'll work closely with product managers and engineers to turn business problems into working solutions \u2014 including generative AI and large language models (LLMs).\n\nResponsibilities:\n\nIdentify AI/ML opportunities across products and support implementation efforts.\nDesign and test prompts for LLM-based generative AI features.\nBuild, evaluate, and deploy machine learning models in production.\nPartner with product managers, engineers, and domain experts to solve business problems with ML.\nFollow and contribute to best practices for ML pipelines, model monitoring, and deployment.\nPresent findings clearly to both technical and non-technical audiences.\n\nYou are a motivated self-starter who can work through ambiguous problems with minimal direction. You bring:\n\nStrong analytical skills and solid knowledge of ML methodologies, data engineering, and feature engineering.\nAbility to collaborate with engineering teams on scalable ML pipelines and established standards.\nClear communication skills \u2014 comfortable presenting to non-technical stakeholders and sharing knowledge across teams.\nA habit of staying current with ML research through papers, blogs, and open-source projects.\n\nQualifications:\nMS or PhD in Math, Statistics, Computer Science, or a related field.\nMS: 2 years of professional ML experience\nPhD: 1+ years of professional ML experience\n2+ years of experience building, deploying, and maintaining ML models in production.\nHands-on experience with data warehouses, feature engineering, ML pipeline automation, and model monitoring.\nSolid knowledge of ML algorithms and techniques, with the ability to explain core concepts clearly.\nHigh proficiency in Python and SQL.\nGood understanding of data warehousing and ETL processes.\nStrong written and verbal communication skills.\nNice to have: Experience with AWS SageMaker.\nBenefits:\n\nWe\u2019re committed to supporting your ultimate well-being through our total compensation package offerings that support your health, wealth and self. These offerings include Medical, Dental, Vision, Health Savings Accounts / Flexible Spending Accounts, Life and AD&D Insurance, 401(k), Tuition Reimbursement, and an array of resources that encourage a lifetime of healthier living. Benefits eligibility may differ depending on full-time or part-time status. Compensation depends on the applicable US geographic market. The expected base pay for this position ranges from $85,000 - $100,000 annually, and will be based on a number of additional factors including skills, experience, and education.\n\nThe Company is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, religion, color, national origin, gender, gender identity, sexual orientation, age, status as a protected veteran, among other things, or status as a qualified individual with disability.\n\nDon\u2019t meet every single requirement? Studies have shown that women and underrepresented minorities are less likely to apply to jobs unless they meet every single qualification. We are dedicated to building a diverse, inclusive, and authentic workplace, so if you\u2019re excited about this role but your past experience doesn\u2019t align perfectly with every qualification in the job description, we encourage you to apply anyway. You may be just the right candidate for this or other roles.\n\n#LI-Remote\n\n#LI-FP1",
+    "originalApplyUrl": "https://careers.enlyte.com/jobs/19451/job?utm_source=indeed_integration&iis=Job%20Board&iisn=Indeed&indeed-apply-token=73a2d2b2a8d6d5c0a62696875eaebd669103652d3f0c2cd5445d3e66b1592b0f",
+    "location": {
+      "countryCode": "US",
+      "admin1Code": null,
+      "admin1Name": null,
+      "admin2Code": null,
+      "admin2Name": null,
+      "admin3Code": null,
+      "admin3Name": null,
+      "admin4Code": null,
+      "admin4Name": null,
+      "city": "Remote",
+      "state": null,
+      "countryName": "United States",
+      "postalCode": null,
+      "latitude": 25,
+      "longitude": -40,
+      "streetAddress": null,
+      "fullAddress": "Remote",
+      "formatted": {
+        "long": "Remote",
+        "short": "Remote"
+      }
+    },
+    "isRepost": false,
+    "jobDescriptionHTML": "<div>Company Overview:\n<div>\nAt Enlyte, we combine innovative technology, clinical expertise, and human compassion to help people recover after workplace injuries or auto accidents. We support their journey back to health and wellness through our industry-leading solutions and services. Whether you're supporting a Fortune 500 client or a local business, developing cutting-edge technology, or providing clinical services you'll work alongside dedicated professionals who share your commitment to excellence and make a meaningful impact. Join us in fueling our mission to protect dreams and restore lives, while building your career in an environment that values collaboration, innovation, and personal growth.</div><div></div><div><b><br>\nBe part of a team that makes a real difference.</b></div>\nJob Description :\n<div><b>\nThis is a full-time remote position that can be located anywhere in the U.S.</b></div><div><br>\nMitchell is looking for a Data Scientist to identify and deliver AI/ML opportunities across our product portfolio. You'll work closely with product managers and engineers to turn business problems into working solutions &mdash; including generative AI and large language models (LLMs).</div><div></div><div><br>\nResponsibilities:</div><ul><li>\nIdentify AI/ML opportunities across products and support implementation efforts.</li><li>\nDesign and test prompts for LLM-based generative AI features.</li><li>\nBuild, evaluate, and deploy machine learning models in production.</li><li>\nPartner with product managers, engineers, and domain experts to solve business problems with ML.</li><li>\nFollow and contribute to best practices for ML pipelines, model monitoring, and deployment.</li><li>\nPresent findings clearly to both technical and non-technical audiences.</li></ul><div></div><div><br>\nYou are a motivated self-starter who can work through ambiguous problems with minimal direction. You bring:</div><ul><li>\nStrong analytical skills and solid knowledge of ML methodologies, data engineering, and feature engineering.</li><li>\nAbility to collaborate with engineering teams on scalable ML pipelines and established standards.</li><li>\nClear communication skills &mdash; comfortable presenting to non-technical stakeholders and sharing knowledge across teams.</li><li>\nA habit of staying current with ML research through papers, blogs, and open-source projects.</li></ul><br>\n<div></div>\nQualifications:\n<ul><li>MS or PhD in Math, Statistics, Computer Science, or a related field.</li><li><ul><li>\nMS: 2 years of professional ML experience</li><li>\nPhD: 1+ years of professional ML experience</li></ul></li><li>\n2+ years of experience building, deploying, and maintaining ML models in production.</li><li>\nHands-on experience with data warehouses, feature engineering, ML pipeline automation, and model monitoring.</li><li>\nSolid knowledge of ML algorithms and techniques, with the ability to explain core concepts clearly.</li><li>\nHigh proficiency in Python and SQL.</li><li>\nGood understanding of data warehousing and ETL processes.</li><li>\nStrong written and verbal communication skills.</li><li>\nNice to have: Experience with AWS SageMaker.</li></ul>\nBenefits:\n<div>\nWe&rsquo;re committed to supporting your ultimate well-being through our total compensation package offerings that support your health, wealth and self. These offerings include Medical, Dental, Vision, Health Savings Accounts / Flexible Spending Accounts, Life and AD&amp;D Insurance, 401(k), Tuition Reimbursement, and an array of resources that encourage a lifetime of healthier living. Benefits eligibility may differ depending on full-time or part-time status. Compensation depends on the applicable US geographic market. The expected base pay for this position ranges from $85,000 - $100,000 annually, and will be based on a number of additional factors including skills, experience, and education.</div><div><br>\n</div><p><i>The Company is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, religion, color, national origin, gender, gender identity, sexual orientation, age, status as a protected veteran, among other things, or status as a qualified individual with disability.</i></p><div><br>\n</div><div>Don&rsquo;t meet every single requirement? Studies have shown that women and underrepresented minorities are less likely to apply to jobs unless they meet every single qualification. We are dedicated to building a diverse, inclusive, and authentic workplace, so if you&rsquo;re excited about this role but your past experience doesn&rsquo;t align perfectly with every qualification in the job description, we encourage you to apply anyway. You may be just the right candidate for this or other roles.</div><div></div><div><br>\n#LI-Remote</div><div>\n#LI-FP1</div></div>",
+    "trackingKey": "5-pdx1-0-1k6b6aioii9u7800-42f8d147312bc672",
+    "jobSourceName": "Mitchell International, Inc."
+  },
+  {
+    "salary": {
+      "max": 42,
+      "min": 30,
+      "type": "HOUR",
+      "currencyCode": "USD"
+    },
+    "id": "bf1f6448a37254c2",
+    "companyDetails": null,
+    "viewJobLink": "/viewjob?jk=bf1f6448a37254c2",
+    "expirationDate": null,
+    "expired": false,
+    "benefits": [],
+    "attributes": [
+      {
+        "key": "2CW9S",
+        "label": "Software issue identification"
+      },
+      {
+        "key": "4R4AM",
+        "label": "Software engineering"
+      },
+      {
+        "key": "6ETQT",
+        "label": "Go"
+      },
+      {
+        "key": "74VPW",
+        "label": "JUnit"
+      },
+      {
+        "key": "7HYQD",
+        "label": "Engineering development testing"
+      },
+      {
+        "key": "8AD9K",
+        "label": "Hourly pay"
+      },
+      {
+        "key": "93YM8",
+        "label": "Tooling"
+      },
+      {
+        "key": "9MWQS",
+        "label": "Software coding"
+      },
+      {
+        "key": "A3ZCV",
+        "label": "Triage"
+      },
+      {
+        "key": "A7SFW",
+        "label": "Writing skills"
+      },
+      {
+        "key": "BT8VG",
+        "label": "Jest"
+      },
+      {
+        "key": "DSQF7",
+        "label": "Remote"
+      },
+      {
+        "key": "GRZ3H",
+        "label": "Quality assurance in testing"
+      },
+      {
+        "key": "JE9VU",
+        "label": "Microcontroller programming"
+      },
+      {
+        "key": "MK4GC",
+        "label": "US work authorization"
+      },
+      {
+        "key": "NN7B3",
+        "label": "Document review"
+      },
+      {
+        "key": "NTDAM",
+        "label": "Ruby"
+      },
+      {
+        "key": "SCQTT",
+        "label": "Open source contribution"
+      },
+      {
+        "key": "UH3JH",
+        "label": "Application security testing"
+      },
+      {
+        "key": "WD7PP",
+        "label": "TypeScript"
+      },
+      {
+        "key": "Y4JG9",
+        "label": "Entry level"
+      },
+      {
+        "key": "Z4F5N",
+        "label": "Providing code feedback"
+      }
+    ],
+    "language": "en",
+    "occupations": [
+      {
+        "key": "EHPW9",
+        "label": "Technology Occupations"
+      },
+      {
+        "key": "HJSX6",
+        "label": "Software Development & Architecture Occupations"
+      },
+      {
+        "key": "KPD97",
+        "label": "Software Quality Assurance Occupations"
+      }
+    ],
+    "socialInsurance": [],
+    "formattedLocation": "Remote",
+    "highVolumeHiring": false,
+    "jobLocationCity": "Remote",
+    "jobTypes": [],
+    "newJob": false,
+    "pubDate": 1783573200000,
+    "title": "Junior Software Engineer - AI Quality & Testing",
+    "urgentlyHiring": false,
+    "jobDescription": "Junior Software Engineer - AI Quality & Testing is a remote engineering review track for evaluating production code, debugging traces, and developer-facing AI outputs against real-world correctness standards. Reviewers reproduce failures, write the unit test the model should have written, and explain the fix so the modeling team can target the gap.\n\nWhy this role matters\n\nEngineering model quality lives or dies on whether the generated code actually compiles, passes tests, and handles edge cases. AuraOne pairs experienced engineers with the modeling team to grade outputs the way a code reviewer would.\n\nResponsibilities\nRun and reproduce candidate code outputs in a sandboxed environment for Junior Software Engineer - AI Quality & Testing assignments.\nGrade junior software engineer ai quality testing engineering review solutions for correctness, style, and edge-case handling.\nWrite minimal failing tests that demonstrate the bug a model output missed.\nCompare paired solutions and rank them with a written rationale tied to the rubric.\nTag failure modes (compile error, runtime crash, off-by-one, security issue) with severity scores.\nDocument recurring code-generation failures so the modeling team can target them.\nCalibrate against gold-standard reviews to keep inter-rater agreement above target.\nQualifications\nStrong day-job engineering experience \u2014 you can read, run, and debug unfamiliar code for Junior Software Engineer - AI Quality & Testing work.\nComfort writing concise unit tests that capture a single failure mode.\nFamiliarity with a testing framework. pytest, Jest, or JUnit. Go test, RSpec, or whatever you use.\nClear written reasoning \u2014 your review note has to convince another senior engineer.\nReliable async availability for at least 10 hours per week.\nPrior code-review or technical-interview-grading experience is a plus.\nExample tasks\nReproduce a generated engineering solution to a coding task, run the test suite, and grade it.\nWrite the smallest failing test that demonstrates a model's edge-case bug.\nCompare two paired solutions and rank them with a written rationale tied to the rubric.\nTriage a security issue surfaced by a model and document the patch the model should have produced.\nNice to have\nOpen-source contributions or a public portfolio that demonstrates production-quality code.\nExperience with the target language's standard tooling, linters, and idiomatic style guides.\nFamiliarity with security-review checklists (OWASP, CWE) and AppSec patterns.\nSkills\nCode review\nDebugging\nUnit testing\nSoftware engineering judgment\nJunior Software Engineer AI Quality Testing engineering review\nQuality Engineering\nTypescript\nVideo Generator\nWork model\n\nRemote \u2014 US-eligible. Remote \u00b7 Independent specialist contractor. Employment type: CONTRACTOR. Applicants must be authorized to work from US.\n\nCompensation\n\n$30\u2013$42 / hr\n\nApplication process\n\nApply through AuraOne's specialist intake for role-specific routing and review. Final project scope, schedule, and contractor terms are confirmed before placement.",
+    "originalApplyUrl": "https://auraone.ai/public/ai-labs/jobs/junior-software-engineer-ai-quality-testing-cmnyzshre01ph4ibp341rast2?utm_source=indeed&utm_medium=job_board&utm_campaign=ai_jobs&utm_content=cmnyzshre01ph4ibp341rast2&role=Junior+Software+Engineer+-+AI+Quality+%26+Testing&category=coding-swe-agent-evaluation&source=indeed&jobId=cmnyzshre01ph4ibp341rast2&sourceJobId=cmnyzshre01ph4ibp341rast2",
+    "location": {
+      "countryCode": "US",
+      "admin1Code": null,
+      "admin1Name": null,
+      "admin2Code": null,
+      "admin2Name": null,
+      "admin3Code": null,
+      "admin3Name": null,
+      "admin4Code": null,
+      "admin4Name": null,
+      "city": "Remote",
+      "state": null,
+      "countryName": "United States",
+      "postalCode": null,
+      "latitude": 25,
+      "longitude": -40,
+      "streetAddress": null,
+      "fullAddress": "Remote",
+      "formatted": {
+        "long": "Remote",
+        "short": "Remote"
+      }
+    },
+    "isRepost": false,
+    "jobDescriptionHTML": "<div><p>Junior Software Engineer - AI Quality &amp; Testing is a remote engineering review track for evaluating production code, debugging traces, and developer-facing AI outputs against real-world correctness standards. Reviewers reproduce failures, write the unit test the model should have written, and explain the fix so the modeling team can target the gap.</p><h2 class=\"jobSectionHeader\"><b>\nWhy this role matters</b></h2><p>\nEngineering model quality lives or dies on whether the generated code actually compiles, passes tests, and handles edge cases. AuraOne pairs experienced engineers with the modeling team to grade outputs the way a code reviewer would.</p><h2 class=\"jobSectionHeader\"><b>\nResponsibilities</b></h2><ul><li>\nRun and reproduce candidate code outputs in a sandboxed environment for Junior Software Engineer - AI Quality &amp; Testing assignments.</li><li>\nGrade junior software engineer ai quality testing engineering review solutions for correctness, style, and edge-case handling.</li><li>\nWrite minimal failing tests that demonstrate the bug a model output missed.</li><li>\nCompare paired solutions and rank them with a written rationale tied to the rubric.</li><li>\nTag failure modes (compile error, runtime crash, off-by-one, security issue) with severity scores.</li><li>\nDocument recurring code-generation failures so the modeling team can target them.</li><li>\nCalibrate against gold-standard reviews to keep inter-rater agreement above target.</li></ul><h2 class=\"jobSectionHeader\"><b>\nQualifications</b></h2><ul><li>\nStrong day-job engineering experience &mdash; you can read, run, and debug unfamiliar code for Junior Software Engineer - AI Quality &amp; Testing work.</li><li>\nComfort writing concise unit tests that capture a single failure mode.</li><li>\nFamiliarity with a testing framework. pytest, Jest, or JUnit. Go test, RSpec, or whatever you use.</li><li>\nClear written reasoning &mdash; your review note has to convince another senior engineer.</li><li>\nReliable async availability for at least 10 hours per week.</li><li>\nPrior code-review or technical-interview-grading experience is a plus.</li></ul><h2 class=\"jobSectionHeader\"><b>\nExample tasks</b></h2><ul><li>\nReproduce a generated engineering solution to a coding task, run the test suite, and grade it.</li><li>\nWrite the smallest failing test that demonstrates a model's edge-case bug.</li><li>\nCompare two paired solutions and rank them with a written rationale tied to the rubric.</li><li>\nTriage a security issue surfaced by a model and document the patch the model should have produced.</li></ul><h2 class=\"jobSectionHeader\"><b>\nNice to have</b></h2><ul><li>\nOpen-source contributions or a public portfolio that demonstrates production-quality code.</li><li>\nExperience with the target language's standard tooling, linters, and idiomatic style guides.</li><li>\nFamiliarity with security-review checklists (OWASP, CWE) and AppSec patterns.</li></ul><h2 class=\"jobSectionHeader\"><b>\nSkills</b></h2><ul><li>\nCode review</li><li>\nDebugging</li><li>\nUnit testing</li><li>\nSoftware engineering judgment</li><li>\nJunior Software Engineer AI Quality Testing engineering review</li><li>\nQuality Engineering</li><li>\nTypescript</li><li>\nVideo Generator</li></ul><h2 class=\"jobSectionHeader\"><b>\nWork model</b></h2><p>\nRemote &mdash; US-eligible. Remote &middot; Independent specialist contractor. Employment type: CONTRACTOR. Applicants must be authorized to work from US.</p><h2 class=\"jobSectionHeader\"><b>\nCompensation</b></h2><p>\n$30&ndash;$42 / hr</p><h2 class=\"jobSectionHeader\"><b>\nApplication process</b></h2><p>\nApply through AuraOne's specialist intake for role-specific routing and review. Final project scope, schedule, and contractor terms are confirmed before placement.</p></div>",
+    "trackingKey": "5-pdx1-0-1k6b6aioii9u7800-bf1f6448a37254c2",
+    "jobSourceName": "AuraOne"
+  },
+  {
+    "salary": null,
+    "id": "e9fef16583bf3dc9",
+    "companyDetails": {
+      "name": "Blue Rose Consulting Group, Inc.",
+      "reviewCount": 9,
+      "rating": 4.7,
+      "ceoName": null,
+      "ceoPhotoUrl": null,
+      "industry": null,
+      "sectorNames": [],
+      "employeeRange": "51 to 200",
+      "revenue": "$5M to $25M (USD)",
+      "headquartersLocation": {
+        "address": "Leesburg, VA"
+      },
+      "websiteUrl": "http://bluerose-consulting.com",
+      "headerImageUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_headerimage/1960x400/db88c999fd74cb2c2fa795c81c803fdd",
+      "logoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/ca4bcd90098ec85d53edbdf8330e5569"
+    },
+    "viewJobLink": "/viewjob?jk=e9fef16583bf3dc9",
+    "companyOverviewLink": "https://www.indeed.com/cmp/Blue-Rose-Consulting-Group,-Inc.",
+    "expirationDate": null,
+    "expired": false,
+    "benefits": [],
+    "attributes": [
+      {
+        "key": "CF3CP",
+        "label": "Full-time"
+      },
+      {
+        "key": "DN563",
+        "label": "Mid-level"
+      },
+      {
+        "key": "DSQF7",
+        "label": "Remote"
+      },
+      {
+        "key": "W6GUJ",
+        "label": "2 years"
+      }
+    ],
+    "language": "en",
+    "occupations": [
+      {
+        "key": "5NN53",
+        "label": "Software Development Occupations"
+      },
+      {
+        "key": "EG6MP",
+        "label": "Back End Developers"
+      },
+      {
+        "key": "EHPW9",
+        "label": "Technology Occupations"
+      },
+      {
+        "key": "HJSX6",
+        "label": "Software Development & Architecture Occupations"
+      }
+    ],
+    "socialInsurance": [],
+    "formattedLocation": "Colorado Springs, CO 80903",
+    "highVolumeHiring": false,
+    "jobLocationCity": "Colorado Springs",
+    "jobLocationState": "CO",
+    "jobTypes": [
+      "Full-time"
+    ],
+    "newJob": false,
+    "pubDate": 1786424400000,
+    "title": "Junior .NET Developer",
+    "urgentlyHiring": false,
+    "jobDescription": "Junior .NET Developer\n\nAbout Blue Rose Consulting Group\n\nBlue Rose Consulting Group is a mission-driven federal contractor dedicated to delivering innovative solutions that support our clients and the communities they serve.\n\nPeople First. Mission Always.\n\nWe believe exceptional outcomes start with exceptional people. We are committed to building collaborative teams where talented professionals can grow, contribute, and make a meaningful impact.\n\nAbout the Role\n\nBlue Rose Consulting Group is seeking a Junior .NET Developer to support a large-scale .NET application within a national security environment. This role will contribute to software development efforts involving data analysis, reconciliation and consolidation, reporting, user interface development, mobile application development, and Continuous Integration/Continuous Delivery (CI/CD).\n\nThe Junior .NET Developer will work collaboratively with technical teams supporting highly available national security systems and contribute to the development and delivery of reliable software solutions.\n\nThis position requires U.S. citizenship and an active Final DoD Secret security clearance.\n\nKey Responsibilities\n\nSupport the development and maintenance of a large-scale .NET application.\nPerform data analysis, reconciliation, and consolidation activities.\nSupport multi-source data integration and deduplication.\nAnalyze trends and patterns within complex datasets.\nDevelop queries and reporting solutions.\nContribute to user interface design and development.\nSupport mobile application development.\nParticipate in CI/CD processes and software delivery activities.\nCollaborate with technical teams supporting highly available national security systems.\n\nMinimum Qualifications\n\nU.S. Citizen.\nActive Final DoD Secret security clearance.\n2+ years of experience supporting complex technical projects, including work with highly available national security systems.\nExperience with data analysis and reconciliation.\nExperience with multi-source data integration and deduplication.\nExperience analyzing trends and patterns and developing queries and reports.\nExperience with user interface design and development.\nHands-on working knowledge of the .NET Framework.\nHands-on working knowledge of SQL Server.\n\nPreferred Qualifications\n\nExperience supporting a large-scale federal IT program.\nExperience working within the SAFe Agile delivery framework.\n\nWhat Success Looks Like\n\nSuccess in this role requires a developer who can contribute effectively within an established technical environment while continuing to build their development expertise. The ideal candidate is collaborative, detail-oriented, and comfortable working with complex data and software systems supporting mission-critical operations.\n\nKey indicators of success include:\n\nProducing accurate and reliable development work.\nEffectively analyzing and working with data from multiple sources.\nCollaborating successfully with technical team members.\nContributing to software development and delivery activities within established processes.\nDemonstrating attention to detail, accountability, and a commitment to supporting mission requirements.",
+    "originalApplyUrl": "https://blueroseconsultinggroup.hrmdirect.com/employment/view.php?req=3784973&jbsrc=1014&location=c70a0914-f623-4b23-69a7-1ab507a1612d",
+    "location": {
+      "countryCode": "US",
+      "admin1Code": "CO",
+      "admin1Name": null,
+      "admin2Code": "041",
+      "admin2Name": null,
+      "admin3Code": null,
+      "admin3Name": null,
+      "admin4Code": null,
+      "admin4Name": null,
+      "city": "Colorado Springs",
+      "state": null,
+      "countryName": "United States",
+      "postalCode": "80903",
+      "latitude": 38.83184,
+      "longitude": -104.818924,
+      "streetAddress": "Colorado Springs,CO 80903",
+      "fullAddress": "Colorado Springs,CO 80903, Colorado Springs, CO 80903",
+      "formatted": {
+        "long": "Colorado Springs, CO 80903",
+        "short": "Colorado Springs, CO"
+      }
+    },
+    "isRepost": false,
+    "jobDescriptionHTML": "<div><div><div><p><b>Junior .NET Developer</b></p>\n<p><b>About Blue Rose Consulting Group</b></p>\n<p>Blue Rose Consulting Group is a mission-driven federal contractor dedicated to delivering innovative solutions that support our clients and the communities they serve.</p>\n<p><b>People First. Mission Always.</b></p>\n<p>We believe exceptional outcomes start with exceptional people. We are committed to building collaborative teams where talented professionals can grow, contribute, and make a meaningful impact.</p>\n<p><b>About the Role</b></p>\n<p>Blue Rose Consulting Group is seeking a <b>Junior .NET Developer </b>to support a large-scale .NET application within a national security environment. This role will contribute to software development efforts involving data analysis, reconciliation and consolidation, reporting, user interface development, mobile application development, and Continuous Integration/Continuous Delivery (CI/CD).</p>\n<p>The Junior .NET Developer will work collaboratively with technical teams supporting highly available national security systems and contribute to the development and delivery of reliable software solutions.</p>\n<p>This position requires <b>U.S. citizenship</b> and an <b>active Final DoD Secret security clearance</b>.</p>\n<p><b>Key Responsibilities</b></p>\n<ul><li>Support the development and maintenance of a large-scale .NET application.</li>\n<li>Perform data analysis, reconciliation, and consolidation activities.</li>\n<li>Support multi-source data integration and deduplication.</li>\n<li>Analyze trends and patterns within complex datasets.</li>\n<li>Develop queries and reporting solutions.</li>\n<li>Contribute to user interface design and development.</li>\n<li>Support mobile application development.</li>\n<li>Participate in CI/CD processes and software delivery activities.</li>\n<li>Collaborate with technical teams supporting highly available national security systems.</li>\n</ul>\n<p><b>Minimum Qualifications</b></p>\n<ul><li>U.S. Citizen.</li>\n<li>Active Final DoD Secret security clearance.</li>\n<li><b>2+ years of experience</b> supporting complex technical projects, including work with highly available national security systems.</li>\n<li>Experience with data analysis and reconciliation.</li>\n<li>Experience with multi-source data integration and deduplication.</li>\n<li>Experience analyzing trends and patterns and developing queries and reports.</li>\n<li>Experience with user interface design and development.</li>\n<li>Hands-on working knowledge of the <b>.NET Framework</b>.</li>\n<li>Hands-on working knowledge of <b>SQL Server</b>.</li>\n</ul>\n<p><b>Preferred Qualifications</b></p>\n<ul><li>Experience supporting a large-scale federal IT program.</li>\n<li>Experience working within the <b>SAFe Agile</b> delivery framework.</li>\n</ul>\n<p><b>What Success Looks Like</b></p>\n<p>Success in this role requires a developer who can contribute effectively within an established technical environment while continuing to build their development expertise. The ideal candidate is collaborative, detail-oriented, and comfortable working with complex data and software systems supporting mission-critical operations.</p>\n<p>Key indicators of success include:</p>\n<ul><li>Producing accurate and reliable development work.</li>\n<li>Effectively analyzing and working with data from multiple sources.</li>\n<li>Collaborating successfully with technical team members.</li>\n<li>Contributing to software development and delivery activities within established processes.</li>\n<li>Demonstrating attention to detail, accountability, and a commitment to supporting mission requirements.</li></ul></div></div></div><div></div>",
+    "trackingKey": "5-pdx1-0-1k6b6aioii9u7800-e9fef16583bf3dc9",
+    "jobSourceName": "Blue Rose Consulting Group, Inc."
+  },
+  {
+    "salary": {
+      "max": 70000,
+      "min": 50000,
+      "type": "YEAR",
+      "currencyCode": "USD"
+    },
+    "id": "2c7a01ed1bfb0a51",
+    "companyDetails": {
+      "name": "Greystone Technology",
+      "reviewCount": 8,
+      "rating": 4,
+      "ceoName": null,
+      "ceoPhotoUrl": null,
+      "industry": "Iv1_INTERNET_AND_SOFTWARE",
+      "sectorNames": [
+        "Iv1_INTERNET_AND_SOFTWARE"
+      ],
+      "employeeRange": "51 to 200",
+      "revenue": null,
+      "headquartersLocation": {
+        "address": "3801 E. Florida Ave., Suite 815\r\nDenver, CO  80210; \r\n\r\nWe also have locations in Fort Collins and Boulder, Colorado"
+      },
+      "websiteUrl": "http://www.greystonetech.com/",
+      "headerImageUrl": "",
+      "logoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_logo/a33bd74699c95ee65b9970ec5a1bccaf"
+    },
+    "viewJobLink": "/viewjob?jk=2c7a01ed1bfb0a51",
+    "companyOverviewLink": "https://www.indeed.com/cmp/Greystone-Technology",
+    "expirationDate": null,
+    "expired": false,
+    "benefits": [
+      {
+        "key": "4EH26",
+        "label": "Paid training"
+      },
+      {
+        "key": "FQJ2X",
+        "label": "Dental insurance"
+      },
+      {
+        "key": "FVKX2",
+        "label": "401(k)"
+      },
+      {
+        "key": "N83EH",
+        "label": "Work from home"
+      },
+      {
+        "key": "RZAT2",
+        "label": "Vision insurance"
+      },
+      {
+        "key": "TZV2T",
+        "label": "Gym membership"
+      }
+    ],
+    "attributes": [
+      {
+        "key": "223C8",
+        "label": "Microsoft Windows Server"
+      },
+      {
+        "key": "2CW9S",
+        "label": "Software issue identification"
+      },
+      {
+        "key": "38T52",
+        "label": "Regression testing implementation"
+      },
+      {
+        "key": "4EH26",
+        "label": "Paid training"
+      },
+      {
+        "key": "64VXT",
+        "label": "Azure"
+      },
+      {
+        "key": "77XE5",
+        "label": "Bug Tracking (Quality assurance practices)"
+      },
+      {
+        "key": "9FUDF",
+        "label": "Test Case Documentation (Quality assurance practices)"
+      },
+      {
+        "key": "9WNNN",
+        "label": "Software support"
+      },
+      {
+        "key": "A7SFW",
+        "label": "Writing skills"
+      },
+      {
+        "key": "BZ6TM",
+        "label": "Direct client contact"
+      },
+      {
+        "key": "CCJPX",
+        "label": "Microsoft SQL Server"
+      },
+      {
+        "key": "CF3CP",
+        "label": "Full-time"
+      },
+      {
+        "key": "CM8JV",
+        "label": "Bug Reporting (Quality assurance practices)"
+      },
+      {
+        "key": "DFGFY",
+        "label": "Public Cloud"
+      },
+      {
+        "key": "DQMU8",
+        "label": "Windows"
+      },
+      {
+        "key": "DSQF7",
+        "label": "Remote"
+      },
+      {
+        "key": "EFBQ3",
+        "label": "User training (technical support)"
+      },
+      {
+        "key": "EHNJH",
+        "label": ".NET"
+      },
+      {
+        "key": "FQJ2X",
+        "label": "Dental insurance"
+      },
+      {
+        "key": "FTYQW",
+        "label": "Manufacturing facility experience"
+      },
+      {
+        "key": "FVKX2",
+        "label": "401(k)"
+      },
+      {
+        "key": "GEYN2",
+        "label": "Collaboration with product development teams"
+      },
+      {
+        "key": "GGXEU",
+        "label": "Analysis skills"
+      },
+      {
+        "key": "HX2Y4",
+        "label": "Factory"
+      },
+      {
+        "key": "JE22R",
+        "label": "Driving"
+      },
+      {
+        "key": "K86Z9",
+        "label": "Issue tracking"
+      },
+      {
+        "key": "K9P3J",
+        "label": "Epicor ERP"
+      },
+      {
+        "key": "KJQ9Q",
+        "label": "Travel"
+      },
+      {
+        "key": "N83EH",
+        "label": "Work from home"
+      },
+      {
+        "key": "RZAT2",
+        "label": "Vision insurance"
+      },
+      {
+        "key": "TTMBQ",
+        "label": "Defect tracking tools"
+      },
+      {
+        "key": "TZV2T",
+        "label": "Gym membership"
+      },
+      {
+        "key": "U7XDP",
+        "label": "SAP ERP"
+      },
+      {
+        "key": "UTPWG",
+        "label": "Associate's degree"
+      },
+      {
+        "key": "WGVA4",
+        "label": "Manufacturing company experience"
+      },
+      {
+        "key": "WSBNK",
+        "label": "Communication skills"
+      },
+      {
+        "key": "WZ42A",
+        "label": "Project stakeholder communication"
+      },
+      {
+        "key": "X8JVX",
+        "label": "Engineering automation testing"
+      },
+      {
+        "key": "Y4JG9",
+        "label": "Entry level"
+      },
+      {
+        "key": "Y8657",
+        "label": "Cross-functional communication"
+      },
+      {
+        "key": "YGHDP",
+        "label": "Test Planning (Quality assurance practices)"
+      },
+      {
+        "key": "YHWNF",
+        "label": "Microsoft Dynamics"
+      },
+      {
+        "key": "YSQS5",
+        "label": "Consulting firm experience"
+      }
+    ],
+    "language": "en",
+    "occupations": [
+      {
+        "key": "EHPW9",
+        "label": "Technology Occupations"
+      },
+      {
+        "key": "HJSX6",
+        "label": "Software Development & Architecture Occupations"
+      },
+      {
+        "key": "KPD97",
+        "label": "Software Quality Assurance Occupations"
+      }
+    ],
+    "socialInsurance": [],
+    "formattedLocation": "Mooresville, NC 28117",
+    "highVolumeHiring": false,
+    "jobLocationCity": "Mooresville",
+    "jobLocationState": "NC",
+    "jobTypes": [
+      "Full-time"
+    ],
+    "newJob": false,
+    "pubDate": 1789621200000,
+    "title": "Junior Software QA Tester",
+    "urgentlyHiring": false,
+    "jobDescription": "Junior Software QA Tester\n\nLocation: Remote, based within approximately 1.5 hours of Mooresville, NC or the surrounding area. Must be able to drive to the client site once a month. Type: Full-Time Department: Managed Application Services | Years of experience: 1 to 3 | Salary: $50k to $70k | Job type: Remote with 20% travel\n\nAbout the Role\n\nWe're looking for a detail-oriented Software QA Tester to join our Managed Application Services team. In this role, you'll test custom applications that our development team builds and deploys across our clients' businesses. These applications integrate closely with our clients systems, so you'll need to be comfortable learning how our clients' operations, processes, and business rules actually work in order to test effectively.\n\nThis is a great fit for someone who's naturally curious, methodical, and not satisfied until they've found the edge case everyone else missed.\n\nWhat You'll Do\nWrite clear, thorough test plans and test cases based on application requirements and client business rules\nExecute manual (and where applicable, automated) testing across web and desktop applications\nIdentify, document, and track software bugs and defects through resolution\nLearn client\u2019s operations and workflows well enough to test software in real-world context\nValidate that applications correctly integrate with and reflect data from client systems\nCollaborate closely with developers, project managers, and client stakeholders to clarify requirements and confirm fixes\nPerform regression testing to ensure new releases don't break existing functionality\nCommunicate testing status, risks, and issues clearly to the project team\nTrain end users on how to use our software solutions\nWhat You Bring\nExperience writing test plans, test cases, and bug reports\nSolid understanding of QA methodologies and the software testing lifecycle\nFamiliarity with Microsoft technologies (e.g., .NET, SQL Server, Windows Server, Azure)\nAbility to quickly learn new business domains \u2014 manufacturing experience or exposure to ERP systems is a strong plus\nStrong analytical skills and an eye for detail\nClear written and verbal communication skills\nComfort working directly with client-facing teams to understand real business processes\nNice to Have\nAssociate or bachelors in a technology related field\nExperience testing applications integrated with ERP platforms (e.g., Dynamics, SAP, Epicor, etc.)\nExposure to automated testing tools or frameworks\nPrior experience in a managed services or software consulting environment\n\nWHO WILL THRIVE IN THIS ROLE\n\nJunior-level, but highly detail-oriented and methodical, with a natural instinct to think outside the box\nComfortable with technology and how software works, without needing deep technical or coding depth\nGenuinely content with steady, repetitive day-to-day work; this role rewards consistency over novelty\nComfortable taking an adversarial approach to testing\nWilling to visit the client's plant once a month to understand how the software drives production and runs the business\nAble to communicate clearly and comfortably with non-technical end users on the plant floor\nPeople with business analyst instincts, or prior business analyst experience, tend to be a strong fit\nComfortable with a break/fix support model and mindset\nWhy Join Us\n\nYou'll play a critical role in making sure the applications we build actually work for the organizations who depend on them every day, catching issues before they hit the production systems. You'll get exposure to a variety of client environments, and industries such as manufacturing, healthcare, transportation etc. and the full lifecycle of custom application development.\n\nWho is Biz Technology Solutions, a New Charter Company?\n\nWe are an established Information Technology company headquartered in the Charlotte NC area. We partner with small to medium size businesses to manage, support, and streamline their IT so they can focus on running their business. What sets us apart from other IT providers is our operational maturity, our culture and credibility in the marketplace.\n\nWhy BTS?\n\nWhile work is important, we also understand a work/life balance and corporate culture are critical to having happy employees! Our average employee tenure is 7 years. Some of the perks you will receive as a BTS employee:\n\nGreat medical insurance plans.\n\nWork from home flexibility\n\nRTO - With Responsible Time Off, you\u2019re trusted to take the time you need to recharge with most of our team asking about 3 weeks off each year.\n\nPaid gym memberships\n\nOn premises fully stocked snack bar, gym, meditation space, and gaming area\n\nFleet of corporate vehicles to drive\n\nSocial committee to plan social events\n\nFamily oriented company culture with a good work/life balance\n\nMonthly catered breakfasts/lunches\n\nPaid certifications and training\n\nCareer path\n\nVision and dental insurance\n\n401K\n\nBiz Technology Solutions, a New Charter Company, is committed to creating an inclusive environment and is proud to be an equal opportunity employer. Biz Technology Solutions recruits, employs, trains, compensates, and promotes regardless of race, color, religion, sex, sexual orientation, gender identity, national origin, veteran or disability status.",
+    "originalApplyUrl": "https://newchartertech.wd12.myworkdayjobs.com/BizTechnologySolutions/job/BizTech-NC---Mooresville/Junior-Software-QA-Tester_JR0914-1",
+    "location": {
+      "countryCode": "US",
+      "admin1Code": "NC",
+      "admin1Name": null,
+      "admin2Code": "097",
+      "admin2Name": null,
+      "admin3Code": null,
+      "admin3Name": null,
+      "admin4Code": null,
+      "admin4Name": null,
+      "city": "Mooresville",
+      "state": null,
+      "countryName": "United States",
+      "postalCode": "28117",
+      "latitude": 35.586807,
+      "longitude": -80.81068,
+      "streetAddress": "353 Oates Rd",
+      "fullAddress": "353 Oates Rd, Mooresville, NC 28117",
+      "formatted": {
+        "long": "Mooresville, NC 28117",
+        "short": "Mooresville, NC"
+      }
+    },
+    "isRepost": false,
+    "jobDescriptionHTML": "<div><h1 class=\"jobSectionHeader\"><b>Junior Software QA Tester</b></h1><p></p><p><b>\nLocation:</b> Remote, based within approximately 1.5 hours of Mooresville, NC or the surrounding area. Must be able to drive to the client site once a month. <b>Type:</b> Full-Time <b>Department:</b> Managed Application Services | <b>Years of experience:</b> 1 to 3 | <b>Salary:</b> $50k to $70k | <b>Job type:</b> Remote with 20% travel</p><h2 class=\"jobSectionHeader\"><b>\nAbout the Role</b></h2><p>\nWe're looking for a detail-oriented <b>Software QA Tester</b> to join our Managed Application Services team. In this role, you'll test custom applications that our development team builds and deploys across our clients' businesses. These applications integrate closely with our clients systems, so you'll need to be comfortable learning how our clients' operations, processes, and business rules actually work in order to test effectively.</p><p>\nThis is a great fit for someone who's naturally curious, methodical, and not satisfied until they've found the edge case everyone else missed.</p><h2 class=\"jobSectionHeader\"><b>\nWhat You'll Do</b></h2><ul><li>\nWrite clear, thorough test plans and test cases based on application requirements and client business rules</li><li>\nExecute manual (and where applicable, automated) testing across web and desktop applications</li><li>\nIdentify, document, and track software bugs and defects through resolution</li><li>\nLearn client&rsquo;s operations and workflows well enough to test software in real-world context</li><li>\nValidate that applications correctly integrate with and reflect data from client systems</li><li>\nCollaborate closely with developers, project managers, and client stakeholders to clarify requirements and confirm fixes</li><li>\nPerform regression testing to ensure new releases don't break existing functionality</li><li>\nCommunicate testing status, risks, and issues clearly to the project team</li><li>\nTrain end users on how to use our software solutions</li></ul><h2 class=\"jobSectionHeader\"><b>\nWhat You Bring</b></h2><ul><li>\nExperience writing test plans, test cases, and bug reports</li><li>\nSolid understanding of QA methodologies and the software testing lifecycle</li><li>\nFamiliarity with Microsoft technologies (e.g., .NET, SQL Server, Windows Server, Azure)</li><li>\nAbility to quickly learn new business domains &mdash; manufacturing experience or exposure to ERP systems is a strong plus</li><li>\nStrong analytical skills and an eye for detail</li><li>\nClear written and verbal communication skills</li><li>\nComfort working directly with client-facing teams to understand real business processes</li></ul><h2 class=\"jobSectionHeader\"><b>\nNice to Have</b></h2><ul><li>\nAssociate or bachelors in a technology related field</li><li>\nExperience testing applications integrated with ERP platforms (e.g., Dynamics, SAP, Epicor, etc.)</li><li>\nExposure to automated testing tools or frameworks</li><li>\nPrior experience in a managed services or software consulting environment</li></ul><p></p><div><p><b>\nWHO WILL THRIVE IN THIS ROLE</b></p></div><ul><li>\nJunior-level, but highly detail-oriented and methodical, with a natural instinct to think outside the box</li><li>\nComfortable with technology and how software works, without needing deep technical or coding depth</li><li>\nGenuinely content with steady, repetitive day-to-day work; this role rewards consistency over novelty</li><li>\nComfortable taking an adversarial approach to testing</li><li>\nWilling to visit the client's plant once a month to understand how the software drives production and runs the business</li><li>\nAble to communicate clearly and comfortably with non-technical end users on the plant floor</li><li>\nPeople with business analyst instincts, or prior business analyst experience, tend to be a strong fit</li><li>\nComfortable with a break/fix support model and mindset</li></ul><h2 class=\"jobSectionHeader\"><b>\nWhy Join Us</b></h2><p>\nYou'll play a critical role in making sure the applications we build actually work for the organizations who depend on them every day, catching issues before they hit the production systems. You'll get exposure to a variety of client environments, and industries such as manufacturing, healthcare, transportation etc. and the full lifecycle of custom application development.\n</p><p><b>Who is Biz Technology Solutions, a New Charter Company?</b></p><p>\nWe are an established Information Technology company headquartered in the Charlotte NC area. We partner with small to medium size businesses to manage, support, and streamline their IT so they can focus on running their business. What sets us apart from other IT providers is our operational maturity, our culture and credibility in the marketplace.</p><p></p><p><b><br>\nWhy BTS?</b></p><p>\nWhile work is important, we also understand a work/life balance and corporate culture are critical to having happy employees! Our average employee tenure is 7 years. Some of the perks you will receive as a BTS employee:</p><ul><li><p><br>\nGreat medical insurance plans.</p></li><li><p>\nWork from home flexibility</p></li><li><p>\nRTO - With Responsible Time Off, you&rsquo;re trusted to take the time you need to recharge with most of our team asking about 3 weeks off each year.</p></li><li><p>\nPaid gym memberships</p></li><li><p>\nOn premises fully stocked snack bar, gym, meditation space, and gaming area</p></li><li><p>\nFleet of corporate vehicles to drive</p></li><li><p>\nSocial committee to plan social events</p></li><li><p>\nFamily oriented company culture with a good work/life balance</p></li><li><p>\nMonthly catered breakfasts/lunches</p></li><li><p>\nPaid certifications and training</p></li><li><p>\nCareer path</p></li><li><p>\nVision and dental insurance</p></li><li><p>\n401K</p></li></ul><p><br>\nBiz Technology Solutions, a New Charter Company, is committed to creating an inclusive environment and is proud to be an equal opportunity employer. Biz Technology Solutions recruits, employs, trains, compensates, and promotes regardless of race, color, religion, sex, sexual orientation, gender identity, national origin, veteran or disability status.</p></div>",
+    "trackingKey": "5-pdx1-0-1k6b6aioii9u7800-2c7a01ed1bfb0a51",
+    "jobSourceName": "New Charter Technologies"
+  },
+  {
+    "salary": null,
+    "id": "a433f1da54353ff3",
+    "companyDetails": {
+      "name": "Sparibis",
+      "reviewCount": 0,
+      "rating": 0,
+      "ceoName": null,
+      "ceoPhotoUrl": null,
+      "industry": null,
+      "sectorNames": [],
+      "employeeRange": null,
+      "revenue": null,
+      "headquartersLocation": null,
+      "websiteUrl": null,
+      "headerImageUrl": "",
+      "logoUrl": ""
+    },
+    "viewJobLink": "/viewjob?jk=a433f1da54353ff3",
+    "companyOverviewLink": "https://www.indeed.com/cmp/Sparibis",
+    "expirationDate": null,
+    "expired": false,
+    "benefits": [],
+    "attributes": [
+      {
+        "key": "2CW9S",
+        "label": "Software issue identification"
+      },
+      {
+        "key": "3GPEM",
+        "label": "Version control"
+      },
+      {
+        "key": "44XX8",
+        "label": "Secure web application development"
+      },
+      {
+        "key": "4E4WW",
+        "label": "Computer science"
+      },
+      {
+        "key": "4MZ9H",
+        "label": "Systems integration"
+      },
+      {
+        "key": "4R4AM",
+        "label": "Software engineering"
+      },
+      {
+        "key": "6X896",
+        "label": "Bachelor's degree in information technology"
+      },
+      {
+        "key": "6XNCP",
+        "label": "Computer Science"
+      },
+      {
+        "key": "7F6H9",
+        "label": "Software Engineering"
+      },
+      {
+        "key": "7HYQD",
+        "label": "Engineering development testing"
+      },
+      {
+        "key": "7W5GS",
+        "label": "Bootstrap"
+      },
+      {
+        "key": "8DY77",
+        "label": "Kubernetes"
+      },
+      {
+        "key": "AP3T4",
+        "label": "C#"
+      },
+      {
+        "key": "B8ZQD",
+        "label": "System performance optimization"
+      },
+      {
+        "key": "CY84Y",
+        "label": "Secret Clearance"
+      },
+      {
+        "key": "DFGFY",
+        "label": "Public Cloud"
+      },
+      {
+        "key": "DN563",
+        "label": "Mid-level"
+      },
+      {
+        "key": "DSQF7",
+        "label": "Remote"
+      },
+      {
+        "key": "EUPT5",
+        "label": "JavaScript frameworks"
+      },
+      {
+        "key": "GFRKJ",
+        "label": "AWS"
+      },
+      {
+        "key": "HFDVW",
+        "label": "Bachelor's degree"
+      },
+      {
+        "key": "JT4AF",
+        "label": "Quality issues"
+      },
+      {
+        "key": "PDQ4Y",
+        "label": "Technical writing"
+      },
+      {
+        "key": "PUZ5F",
+        "label": "Accessible front-end development"
+      },
+      {
+        "key": "Q3QNF",
+        "label": "Developing and maintaining backend systems"
+      },
+      {
+        "key": "Q3S44",
+        "label": "Integration with Third-Party Services (system development)"
+      },
+      {
+        "key": "QM3S8",
+        "label": "Web applications"
+      },
+      {
+        "key": "R5XTG",
+        "label": "UI implementation"
+      },
+      {
+        "key": "RFBH2",
+        "label": "Application Maintenance"
+      },
+      {
+        "key": "RP4CB",
+        "label": "Front-end component implementation"
+      },
+      {
+        "key": "RQJKX",
+        "label": "Systems & applications support"
+      },
+      {
+        "key": "SBHFT",
+        "label": "Integration testing"
+      },
+      {
+        "key": "SHA65",
+        "label": "Back-end integration"
+      },
+      {
+        "key": "SMJ38",
+        "label": "Unit testing"
+      },
+      {
+        "key": "UG5BU",
+        "label": "Bachelor's degree in software engineering"
+      },
+      {
+        "key": "UJYXC",
+        "label": "Query management"
+      },
+      {
+        "key": "VBXYJ",
+        "label": "Bachelor's degree in computer science"
+      },
+      {
+        "key": "W6GUJ",
+        "label": "2 years"
+      },
+      {
+        "key": "WSBNK",
+        "label": "Communication skills"
+      },
+      {
+        "key": "XB6V2",
+        "label": "Cross-browser compatibility design"
+      },
+      {
+        "key": "Y8657",
+        "label": "Cross-functional communication"
+      },
+      {
+        "key": "Z4F5N",
+        "label": "Providing code feedback"
+      },
+      {
+        "key": "ZAWNY",
+        "label": "Production troubleshooting"
+      },
+      {
+        "key": "ZPP7S",
+        "label": "Information Technology"
+      }
+    ],
+    "language": "en",
+    "occupations": [
+      {
+        "key": "5NN53",
+        "label": "Software Development Occupations"
+      },
+      {
+        "key": "EHPW9",
+        "label": "Technology Occupations"
+      },
+      {
+        "key": "HJSX6",
+        "label": "Software Development & Architecture Occupations"
+      }
+    ],
+    "socialInsurance": [],
+    "formattedLocation": "Washington, DC",
+    "highVolumeHiring": false,
+    "jobLocationCity": "Washington",
+    "jobLocationState": "DC",
+    "jobTypes": [],
+    "newJob": false,
+    "pubDate": 1792645200000,
+    "title": "Jr .Net Developer",
+    "urgentlyHiring": false,
+    "jobDescription": "Location: 100% remote.\n\nYears\u2019 Experience: 2+ years professional development experience.\n\nEducation: Bachelor\u2019s degree in computer science, Software Engineering or IT related field.\n\nClearance: Applicants must currently possess an active Secret security clearance or higher-level security clearance. United States Citizenship is required as part of the eligibility criteria to be able to obtain this type of security clearance.\n\nKey Skills:\n\n\u2022 Software development experience using C# and .NET 8.0.\n\u2022 Experience developing and maintaining web applications using Blazor and JavaScript.\n\u2022 Experience with front-end technologies such as Bootstrap and React.js.\n\nResponsibilities\n\n\u2022 Develop, enhance, test, and maintain web applications using C# and .NET 8.0, supporting new functionality, application improvements, and ongoing maintenance across multiple applications.\n\u2022 Develop and maintain user interfaces using Blazor, JavaScript, Bootstrap, and React.js, with a focus on functionality, usability, performance, and cross-browser compatibility.\n\u2022 Implement and maintain application functionality across frontend and backend components, ensuring reliable integration between user interfaces, application services, and databases.\n\u2022 Integrate and maintain REST APIs and other application interfaces, troubleshoot integration issues, and assess the impact of changes to external APIs and dependent services.\n\u2022 Integrate front-end applications with AWS services.\n\u2022 Ensure application performance, accessibility, and cross-browser compatibility.\n\u2022 Develop and maintain application queries and database interactions with Oracle, ensuring data accuracy, consistency, and reliable application functionality. Collaborate with database administrators on complex queries and database-related issues as needed.\n\u2022 Investigate, diagnose, and resolve application defects and production issues, with particular attention to frontend functionality, application behavior, and system integrations.\n\u2022 Develop and execute unit and integration tests, participate in code reviews, and follow established coding standards and version control practices to maintain application quality and reliability.\n\u2022 Identify and resolve application performance issues, improve application responsiveness, and support the stability and reliability of production applications.\n\u2022 Follow established secure coding practices and applicable program security requirements when developing, modifying, and maintaining applications that support U.S. Navy missions.\n\u2022 Document application changes and technical solutions, collaborate with developers, system engineers, database administrators, and other technical team members, and support the investigation and resolution of cross-system issues.\n\u2022 Collaborate with site reliability engineering and infrastructure teams to troubleshoot application issues in Kubernetes-based environments, as needed.\n\nQualifications\n\n\u2022 2+ years of professional software development experience, including hands-on development using C# and .NET.\n\u2022 Bachelor\u2019s degree in computer science, Software Engineering, Information Technology, or a related field.\n\u2022 Active Secret security clearance.\n\u2022 Hands-on experience developing and maintaining applications using C# and .NET 8.0.\n\u2022 Experience developing and maintaining web applications using Blazor and JavaScript.\n\u2022 Experience with front-end technologies such as Bootstrap and React.js.\n\u2022 Experience integrating and troubleshooting REST APIs and application interfaces.\n\u2022 Strong troubleshooting, debugging, and problem-solving skills, including the ability to investigate application defects and resolve production issues.\n\u2022 Ability to work collaboratively with developers, database administrators, system engineers, and other technical stakeholders.\n\u2022 Strong written and verbal communication skills, including the ability to document technical changes and communicate issues and solutions effectively.\n\nAbout Sparibis\n\nSparibis LLC is a professional solution firm that Clients rely on to access the best talent to drive their business success.\n\nSparibis is an equal opportunity employer that values diversity at all levels. All individuals, regardless of personal characteristics, are encouraged to apply.",
+    "originalApplyUrl": "https://sparibis.applicantstack.com/x/detail/a2c7hhk6fa4a/aaac",
+    "location": {
+      "countryCode": "US",
+      "admin1Code": "DC",
+      "admin1Name": null,
+      "admin2Code": null,
+      "admin2Name": null,
+      "admin3Code": null,
+      "admin3Name": null,
+      "admin4Code": null,
+      "admin4Name": null,
+      "city": "Washington",
+      "state": null,
+      "countryName": "United States",
+      "postalCode": null,
+      "latitude": 38.89511,
+      "longitude": -77.03637,
+      "streetAddress": null,
+      "fullAddress": "Washington, DC",
+      "formatted": {
+        "long": "Washington, DC",
+        "short": "Washington, DC"
+      }
+    },
+    "isRepost": false,
+    "jobDescriptionHTML": "<b>Location:</b> 100% remote.\n<br><br>\n<b>Years\u2019 Experience:</b> 2+ years professional development experience.\n<br><br>\n<b>Education:</b> Bachelor\u2019s degree in computer science, Software Engineering or IT related field.\n<br><br>\n<b>Clearance:</b> Applicants must currently possess an active Secret security clearance or higher-level security clearance. United States Citizenship is required as part of the eligibility criteria to be able to obtain this type of security clearance.\n<br><br>\n<b>Key Skills:</b><br>\n<ul>\n<li>Software development experience using C# and .NET 8.0.</li>\n<li>Experience developing and maintaining web applications using Blazor and JavaScript.</li>\n<li>Experience with front-end technologies such as Bootstrap and React.js.</li>\n</ul>\nResponsibilities\n<br><br>\n<ul>\n<li>Develop, enhance, test, and maintain web applications using C# and .NET 8.0, supporting new functionality, application improvements, and ongoing maintenance across multiple applications.</li>\n<li>Develop and maintain user interfaces using Blazor, JavaScript, Bootstrap, and React.js, with a focus on functionality, usability, performance, and cross-browser compatibility.</li>\n<li>Implement and maintain application functionality across frontend and backend components, ensuring reliable integration between user interfaces, application services, and databases.</li>\n<li>Integrate and maintain REST APIs and other application interfaces, troubleshoot integration issues, and assess the impact of changes to external APIs and dependent services.</li>\n<li>Integrate front-end applications with AWS services.</li>\n<li>Ensure application performance, accessibility, and cross-browser compatibility.</li>\n<li>Develop and maintain application queries and database interactions with Oracle, ensuring data accuracy, consistency, and reliable application functionality. Collaborate with database administrators on complex queries and database-related issues as needed.</li>\n<li>Investigate, diagnose, and resolve application defects and production issues, with particular attention to frontend functionality, application behavior, and system integrations.</li>\n<li>Develop and execute unit and integration tests, participate in code reviews, and follow established coding standards and version control practices to maintain application quality and reliability.</li>\n<li>Identify and resolve application performance issues, improve application responsiveness, and support the stability and reliability of production applications.</li>\n<li>Follow established secure coding practices and applicable program security requirements when developing, modifying, and maintaining applications that support U.S. Navy missions.</li>\n<li>Document application changes and technical solutions, collaborate with developers, system engineers, database administrators, and other technical team members, and support the investigation and resolution of cross-system issues.</li>\n<li>Collaborate with site reliability engineering and infrastructure teams to troubleshoot application issues in Kubernetes-based environments, as needed.</li>\n</ul>\nQualifications\n<br><br>\n<ul>\n<li>2+ years of professional software development experience, including hands-on development using C# and .NET.</li>\n<li>Bachelor\u2019s degree in computer science, Software Engineering, Information Technology, or a related field.</li>\n<li>Active Secret security clearance.</li>\n<li>Hands-on experience developing and maintaining applications using C# and .NET 8.0.</li>\n<li>Experience developing and maintaining web applications using Blazor and JavaScript.</li>\n<li>Experience with front-end technologies such as Bootstrap and React.js.</li>\n<li>Experience integrating and troubleshooting REST APIs and application interfaces.</li>\n<li>Strong troubleshooting, debugging, and problem-solving skills, including the ability to investigate application defects and resolve production issues.</li>\n<li>Ability to work collaboratively with developers, database administrators, system engineers, and other technical stakeholders.</li>\n<li>Strong written and verbal communication skills, including the ability to document technical changes and communicate issues and solutions effectively.</li>\n</ul>\nAbout Sparibis\n<br><br>\nSparibis LLC is a professional solution firm that Clients rely on to access the best talent to drive their business success.\n<br><br>\nSparibis is an equal opportunity employer that values diversity at all levels. All individuals, regardless of personal characteristics, are encouraged to apply.",
+    "trackingKey": "5-pdx1-0-1k6b6aioii9u7800-a433f1da54353ff3",
+    "jobSourceName": "Sparibis"
+  }
+]
