@@ -190,6 +190,31 @@ button:focus-visible, a:focus-visible {
   gap: 10px;
 }
 
+.nav-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #000000;
+  background: #f1f5f9;
+}
+
+.nav-link.active {
+  color: #000000;
+  background: #f1f5f9;
+  font-weight: 850;
+  box-shadow: inset 0 0 0 1px #cbd5e1;
+}
+
 .btn-apikeys {
   height: 32px;
   padding: 0 12px;
@@ -229,6 +254,19 @@ button:focus-visible, a:focus-visible {
   padding: 20px 24px 40px;
   display: grid;
   grid-template-columns: minmax(360px, 1.05fr) minmax(340px, 1fr) minmax(420px, 1.35fr);
+  gap: 20px;
+  align-items: start;
+  box-sizing: border-box;
+}
+
+/* 2-COLUMN MASTER-DETAIL LAYOUT (Daily Jobs & All Jobs) */
+.app-2col-layout {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+  display: grid;
+  grid-template-columns: minmax(380px, 460px) minmax(500px, 1.4fr);
   gap: 20px;
   align-items: start;
   box-sizing: border-box;
@@ -1375,6 +1413,58 @@ button:focus-visible, a:focus-visible {
   background: var(--bg-card);
 }
 
+/* Quick Action Buttons on Job Item (Save & Remove) */
+.btn-job-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+  line-height: 1.2;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  flex: none;
+}
+
+.btn-job-save {
+  background-color: #16a34a !important;
+  color: #ffffff !important;
+  border-color: #15803d !important;
+}
+
+.btn-job-save:hover {
+  background-color: #15803d !important;
+  border-color: #166534 !important;
+  transform: translateY(-1px);
+}
+
+.btn-job-save svg {
+  stroke: #ffffff;
+}
+
+.btn-job-remove {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  border-color: #b91c1c !important;
+}
+
+.btn-job-remove:hover {
+  background-color: #b91c1c !important;
+  border-color: #991b1b !important;
+  transform: translateY(-1px);
+}
+
+.btn-job-remove svg {
+  stroke: #ffffff;
+}
+
 /* Empty State */
 .empty-list-state {
   padding: 48px 20px;
@@ -1767,6 +1857,10 @@ button:focus-visible, a:focus-visible {
     grid-template-columns: 1fr 1fr;
     gap: 16px;
   }
+  .app-2col-layout {
+    grid-template-columns: minmax(340px, 420px) 1fr;
+    gap: 16px;
+  }
   .col-search {
     grid-column: 1 / -1;
   }
@@ -1775,8 +1869,9 @@ button:focus-visible, a:focus-visible {
   }
 }
 
-@media (max-width: 800px) {
-  .app-3col-layout {
+@media (max-width: 900px) {
+  .app-3col-layout,
+  .app-2col-layout {
     grid-template-columns: 1fr;
     padding: 16px 14px;
   }
