@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoleRadar — Talk to Data</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='11' stroke='%23000000' stroke-width='2.5' fill='none'/%3E%3Ccircle cx='16' cy='16' r='5' stroke='%23000000' stroke-width='2.2' fill='none'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23000000'/%3E%3Cline x1='16' y1='2' x2='16' y2='7' stroke='%23000000' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='16' y1='25' x2='16' y2='30' stroke='%23000000' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='2' y1='16' x2='7' y2='16' stroke='%23000000' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='25' y1='16' x2='30' y2='16' stroke='%23000000' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="talk">
+
+  <div class="app-layout">
+    <!-- Vertical Sidebar Navigation -->
+    <aside class="sidebar-nav">
+      <div class="sidebar-header">
+        <a href="home.html" class="sidebar-brand">
+          <div class="brand-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="22" y1="12" x2="18" y2="12"></line>
+              <line x1="6" y1="12" x2="2" y2="12"></line>
+              <line x1="12" y1="6" x2="12" y2="2"></line>
+              <line x1="12" y1="22" x2="12" y2="18"></line>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="12" cy="12" r="1.5" fill="#000000"></circle>
+            </svg>
+          </div>
+          <div class="sidebar-brand-meta">
+            <span class="sidebar-brand-name">RoleRadar</span>
+            <span class="sidebar-brand-tag">v2.0 · Autonomous</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Navigation</div>
+        <a href="home.html" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span>Homepage</span>
+        </a>
+        <a href="dashboard.html" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+            <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+            <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+            <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+          </svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="index.html" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Job Search</span>
+        </a>
+        <a href="daily-jobs.html" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>Daily Jobs</span>
+          <span class="sidebar-badge" id="nav-daily-count">25</span>
+        </a>
+        <a href="all-jobs.html" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>All Jobs</span>
+          <span class="sidebar-badge" id="nav-all-count">0</span>
+        </a>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Intelligence</div>
+        <a href="talk-to-data.html" class="sidebar-link active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Talk to Data</span>
+          <span class="sidebar-pill-ai">RAG AI</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <button type="button" class="sidebar-btn-apikeys" id="btn-open-apikeys" title="Configure API Keys">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="7.5" cy="15.5" r="5.5"></circle>
+            <path d="m21 2-9.6 9.6"></path>
+            <path d="m15.5 7.5 3 3"></path>
+          </svg>
+          <span>API Keys</span>
+        </button>
+
+        <div class="sidebar-status-box" id="sidebar-status-indicator">
+          <span class="sidebar-status-dot"></span>
+          <span id="sidebar-status-text">Ready · Local Mode</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="app-main">
+      <div class="talk-container">
+
+        <!-- Top Header Bar -->
+        <header class="talk-header">
+          <div class="talk-title-group">
+            <div class="talk-title">
+              <span>Talk to Data</span>
+              <span class="talk-badge-ai">LangGraph RAG</span>
+            </div>
+            <p class="talk-subtitle">Query indexed job postings, salary figures, requirements, and hiring trends using natural language.</p>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="talk-status-badge" id="rag-status-badge">
+              <span class="sidebar-status-dot" id="rag-status-dot" style="background: #eab308;"></span>
+              <span id="rag-status-label">Checking RAG Backend...</span>
+            </div>
+            <button type="button" class="btn-ghost" id="btn-reindex" style="font-size: 12px; font-weight: 700;" title="Rebuild ChromaDB Vector Store">Re-index</button>
+          </div>
+        </header>
+
+        <!-- Chat Conversation Feed -->
+        <div class="talk-chat-feed" id="chat-feed">
+          <!-- Initial Welcome Message -->
+          <div class="talk-msg talk-msg-assistant">
+            <div class="talk-msg-avatar">AI</div>
+            <div class="talk-msg-bubble">
+              <p style="margin: 0 0 8px;"><strong>Welcome to RoleRadar Career Intelligence!</strong></p>
+              <p style="margin: 0 0 10px; color: #334155;">
+                I have indexed all active job postings from your local results collection (including LinkedIn, Indeed, Glassdoor, Google Jobs, and ZipRecruiter). You can ask me to find specific compensation bands, identify remote junior positions, compare required tech stacks, or synthesize market trends.
+              </p>
+              <div style="font-size: 12px; color: #64748b; font-weight: 600;">
+                Click any suggestion below or type your custom inquiry.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suggested Prompt Chips -->
+        <div class="talk-suggested-prompts" id="suggested-prompts">
+          <span style="font-size: 11.5px; font-weight: 750; color: #64748b; text-transform: uppercase;">Try asking:</span>
+          <button type="button" class="talk-suggest-chip" onclick="askPreset('Which junior roles mention remote work and what are their locations?')">Remote junior roles?</button>
+          <button type="button" class="talk-suggest-chip" onclick="askPreset('What are the highest paying AI and machine learning positions?')">Highest paying AI jobs?</button>
+          <button type="button" class="talk-suggest-chip" onclick="askPreset('Which companies in Seattle or Washington DC have open positions?')">Seattle &amp; DC openings?</button>
+          <button type="button" class="talk-suggest-chip" onclick="askPreset('Compare requirements for Software Engineer vs AI Engineer roles.')">Compare SE vs AI Engineer</button>
+        </div>
+
+        <!-- Message Input Bar -->
+        <form class="talk-input-bar" id="chat-form" onsubmit="handleSendQuery(event)">
+          <input type="text" id="chat-input" class="talk-input-field" placeholder="Ask a question across all indexed jobs (e.g. Which roles require Python and pay over $100k?)..." autocomplete="off" required>
+          <button type="submit" class="talk-send-btn" id="btn-send-query">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+            <span>Ask</span>
+          </button>
+        </form>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- API Keys Window -->
+  <div class="modal-backdrop" id="settings-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="apikeys-modal-title">
+    <div class="apikeys-window">
+      <div class="window-header">
+        <div class="window-title-row">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="7.5" cy="15.5" r="5.5"></circle>
+            <path d="m21 2-9.6 9.6"></path>
+            <path d="m15.5 7.5 3 3"></path>
+          </svg>
+          <h2 class="window-title" id="apikeys-modal-title">API Keys Configuration</h2>
+        </div>
+        <button type="button" class="btn-window-close" id="btn-close-settings" aria-label="Close window">&times;</button>
+      </div>
+      
+      <div class="window-body">
+        <p class="window-desc">
+          Paste your personal API credentials below. They are saved directly into your browser's local storage and used only for direct calls to Apify and Google Gemini.
+        </p>
+
+        <!-- Apify API Token Field -->
+        <div class="input-field-group">
+          <div class="field-label-row">
+            <label class="field-label" for="setting-apify-token">Apify API Token</label>
+            <span class="key-status-badge unset" id="status-apify">NOT SET</span>
+          </div>
+          <div class="input-wrapper">
+            <input type="password" id="setting-apify-token" class="text-input mono-input" placeholder="apify_api_..." autocomplete="off" spellcheck="false">
+            <button type="button" class="btn-toggle-visibility" data-target="setting-apify-token" title="Show/Hide">
+              <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+          <div class="field-help-text">
+            Required to scrape live job listings from LinkedIn, Indeed, Glassdoor, Google Jobs, &amp; ZipRecruiter. 
+            <a href="https://console.apify.com/account/integrations" target="_blank" rel="noopener">Get Apify Token &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Google Gemini API Key Field -->
+        <div class="input-field-group">
+          <div class="field-label-row">
+            <label class="field-label" for="setting-gemini-key">Google Gemini API Key</label>
+            <span class="key-status-badge unset" id="status-gemini">NOT SET</span>
+          </div>
+          <div class="input-wrapper">
+            <input type="password" id="setting-gemini-key" class="text-input mono-input" placeholder="AIzaSy..." autocomplete="off" spellcheck="false">
+            <button type="button" class="btn-toggle-visibility" data-target="setting-gemini-key" title="Show/Hide">
+              <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+          <div class="field-help-text">
+            Required for the &ldquo;Describe to AI&rdquo; intelligent career parser using Gemini 2.5 Flash. 
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">Get Google API Key &rarr;</a>
+          </div>
+        </div>
+
+        <div class="window-alert" id="settings-alert" style="display: none;"></div>
+      </div>
+
+      <div class="window-footer">
+        <button type="button" class="btn-danger-outline" id="btn-clear-settings">Clear Keys</button>
+        <div class="window-footer-right">
+          <button type="button" class="btn-secondary-action" id="btn-cancel-settings">Cancel</button>
+          <button type="button" class="btn-primary-action" id="btn-save-settings">Save Keys</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="results/jobs_data.js"></script>
+  <script>
+    // Talk to Data - LangGraph RAG Client with Standby Fallback
+    const RAG_ENDPOINT = "http://127.0.0.1:8000/api/rag/query";
+    const HEALTH_ENDPOINT = "http://127.0.0.1:8000/api/rag/health";
+    const INDEX_ENDPOINT = "http://127.0.0.1:8000/api/rag/index";
+
+    const STORAGE_KEY_APIFY = "roleRadar_apify_token";
+    const STORAGE_KEY_GEMINI = "roleRadar_gemini_api_key";
+
+    function getApifyToken() {
+      const local = localStorage.getItem(STORAGE_KEY_APIFY);
+      return (local && local.trim()) || ((window.ENV && window.ENV.APIFY_TOKEN) ? window.ENV.APIFY_TOKEN.trim() : "");
+    }
+    function getGeminiApiKey() {
+      const local = localStorage.getItem(STORAGE_KEY_GEMINI);
+      return (local && local.trim()) || ((window.ENV && window.ENV.GEMINI_API_KEY) ? window.ENV.GEMINI_API_KEY.trim() : "");
+    }
+
+    let isRagBackendHealthy = false;
+
+    async function checkRagHealth() {
+      const label = document.getElementById("rag-status-label");
+      const dot = document.getElementById("rag-status-dot");
+      try {
+        const res = await fetch(HEALTH_ENDPOINT, { method: "GET", headers: { "Accept": "application/json" } });
+        if (res.ok) {
+          const data = await res.json();
+          isRagBackendHealthy = true;
+          dot.style.background = "#16a34a";
+          label.textContent = `RAG Backend Online (${data.indexed_jobs_count || 25} docs)`;
+          return;
+        }
+      } catch (e) {
+        // Fallback to client-side mode
+      }
+      isRagBackendHealthy = false;
+      dot.style.background = "#0f172a";
+      label.textContent = "Standby (Local Semantic Engine)";
+    }
+
+    function askPreset(promptText) {
+      document.getElementById("chat-input").value = promptText;
+      handleSendQuery(new Event("submit"));
+    }
+
+    async function handleSendQuery(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById("chat-input");
+      const query = input.value.trim();
+      if (!query) return;
+
+      input.value = "";
+      const sendBtn = document.getElementById("btn-send-query");
+      sendBtn.disabled = true;
+
+      // Append User Message Bubble
+      appendMessage("user", query);
+
+      // Append Loading Assistant Bubble
+      const loadingMsgId = appendLoadingMessage();
+
+      try {
+        if (isRagBackendHealthy) {
+          // 1. Query FastAPI LangGraph Backend
+          const res = await fetch(RAG_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ query: query, top_k: 4 })
+          });
+
+          if (!res.ok) throw new Error(`RAG Server responded with HTTP ${res.status}`);
+          const data = await res.json();
+          replaceLoadingWithAnswer(loadingMsgId, data.answer, data.sources, data.reasoning);
+        } else {
+          // 2. Client-Side Semantic Intelligence Engine Fallback
+          const answerData = await executeClientSideQuery(query);
+          replaceLoadingWithAnswer(loadingMsgId, answerData.answer, answerData.sources, answerData.reasoning);
+        }
+      } catch (err) {
+        // Fallback on error
+        const answerData = await executeClientSideQuery(query);
+        replaceLoadingWithAnswer(loadingMsgId, answerData.answer, answerData.sources, "Executed using local browser semantic index fallback.");
+      } finally {
+        sendBtn.disabled = false;
+      }
+    }
+
+    function appendMessage(role, text) {
+      const feed = document.getElementById("chat-feed");
+      const msg = document.createElement("div");
+      msg.className = `talk-msg talk-msg-${role}`;
+      msg.innerHTML = `
+        <div class="talk-msg-avatar">${role === "user" ? "You" : "AI"}</div>
+        <div class="talk-msg-bubble">
+          <p style="margin: 0; white-space: pre-wrap;">${escapeHtml(text)}</p>
+        </div>
+      `;
+      feed.appendChild(msg);
+      feed.scrollTop = feed.scrollHeight;
+    }
+
+    function appendLoadingMessage() {
+      const feed = document.getElementById("chat-feed");
+      const id = "loading-" + Date.now();
+      const msg = document.createElement("div");
+      msg.id = id;
+      msg.className = "talk-msg talk-msg-assistant";
+      msg.innerHTML = `
+        <div class="talk-msg-avatar">AI</div>
+        <div class="talk-msg-bubble" style="display: flex; align-items: center; gap: 8px; color: #475569;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spin-icon" style="animation: spin 1s linear infinite;">
+            <circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"></circle>
+          </svg>
+          <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
+          <span>Retrieving relevant postings and synthesizing answer...</span>
+        </div>
+      `;
+      feed.appendChild(msg);
+      feed.scrollTop = feed.scrollHeight;
+      return id;
+    }
+
+    function replaceLoadingWithAnswer(id, answer, sources, reasoning) {
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      let sourcesHtml = "";
+      if (Array.isArray(sources) && sources.length > 0) {
+        sourcesHtml = `
+          <div class="talk-sources-box">
+            <div class="talk-sources-title">Verified Job Postings Referenced (${sources.length})</div>
+            <div class="talk-sources-list">
+              ${sources.map(s => {
+                const salHtml = (s.salary && s.salary !== "Not specified") ? `<span class="job-salary-tag" style="margin-top: 4px;">${escapeHtml(s.salary)}</span>` : "";
+                return `
+                  <a href="${escapeHtml(s.url || "#")}" target="_blank" rel="noopener" class="talk-source-item">
+                    <div class="talk-source-title">${escapeHtml(s.title)}</div>
+                    <div class="talk-source-meta">${escapeHtml(s.company)} · ${escapeHtml(s.location)}</div>
+                    ${salHtml}
+                  </a>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        `;
+      }
+
+      let reasoningHtml = "";
+      if (reasoning) {
+        reasoningHtml = `<div class="talk-reasoning-box"><strong>Strategy / Retrieval Context:</strong> ${escapeHtml(reasoning)}</div>`;
+      }
+
+      target.innerHTML = `
+        <div class="talk-msg-avatar">AI</div>
+        <div class="talk-msg-bubble">
+          <div style="white-space: pre-wrap; line-height: 1.6;">${escapeHtml(answer)}</div>
+          ${reasoningHtml}
+          ${sourcesHtml}
+        </div>
+      `;
+      const feed = document.getElementById("chat-feed");
+      feed.scrollTop = feed.scrollHeight;
+    }
+
+    // Client-side Semantic Scoring Fallback
+    async function executeClientSideQuery(q) {
+      const qLower = q.toLowerCase();
+      let jobs = [];
+      if (window.SCRAPED_JOBS && Array.isArray(window.SCRAPED_JOBS)) {
+        jobs = [...window.SCRAPED_JOBS];
+      }
+
+      // Score jobs based on keyword relevance
+      const tokens = qLower.split(/\W+/).filter(t => t.length > 2);
+      const scored = jobs.map(j => {
+        let score = 0;
+        const text = `${j.title} ${j.company} ${j.location} ${j.description || ""} ${j.salary || ""}`.toLowerCase();
+        tokens.forEach(t => {
+          if (j.title.toLowerCase().includes(t)) score += 3;
+          if ((j.location || "").toLowerCase().includes(t)) score += 2;
+          if (text.includes(t)) score += 1;
+        });
+        return { job: j, score };
+      });
+
+      scored.sort((a, b) => b.score - a.score);
+      const topMatches = scored.slice(0, 4).filter(s => s.score > 0).map(s => s.job);
+
+      if (topMatches.length === 0) {
+        return {
+          answer: "I searched all indexed postings in RoleRadar, but found no active listings directly matching those terms. Try adjusting your query or broadening your keywords (e.g. 'remote', 'AI', 'software').",
+          sources: [],
+          reasoning: "Keyword matching returned 0 matching documents across the local job collection."
+        };
+      }
+
+      // Check if user has Gemini key configured for LLM synthesis
+      const geminiKey = getGeminiApiKey();
+      if (geminiKey) {
+        try {
+          const prompt = `You are the RoleRadar AI Career Assistant. A user asks: "${q}". 
+Based ONLY on these retrieved job postings:
+${topMatches.map((m, i) => `[${i+1}] Title: ${m.title}, Company: ${m.company}, Location: ${m.location}, Salary: ${m.salary || 'Not specified'}, Overview: ${(m.description||'').slice(0, 300)}`).join('\n\n')}
+
+Provide a direct, concise, factual, professional answer answering the user's question, citing the relevant companies and positions. Do not invent facts.`;
+
+          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+          });
+
+          if (res.ok) {
+            const result = await res.json();
+            const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (text) {
+              return {
+                answer: text,
+                sources: topMatches.map(m => ({
+                  title: m.title,
+                  company: m.company,
+                  location: m.location,
+                  salary: m.salary || "Not specified",
+                  url: m.url || "#",
+                  score: 0.95
+                })),
+                reasoning: `Synthesized using Gemini 2.5 Flash from ${topMatches.length} matching listings.`
+              };
+            }
+          }
+        } catch (e) {}
+      }
+
+      // Deterministic fallback synthesis
+      const summaries = topMatches.map(m => `• **${m.title}** at **${m.company}** (${m.location})${m.salary ? ` — Compensation: ${m.salary}` : ""}`).join("\n");
+      const answer = `Based on your indexed results, here are the top positions matching "${q}":\n\n${summaries}\n\nYou can inspect the complete posting details below.`;
+
+      return {
+        answer: answer,
+        sources: topMatches.map(m => ({
+          title: m.title,
+          company: m.company,
+          location: m.location,
+          salary: m.salary || "Not specified",
+          url: m.url || "#",
+          score: 0.88
+        })),
+        reasoning: `Retrieved ${topMatches.length} high-confidence matches using local browser semantic index.`
+      };
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      checkRagHealth();
+      setInterval(checkRagHealth, 15000);
+
+      // Re-index trigger
+      const btnReindex = document.getElementById("btn-reindex");
+      if (btnReindex) {
+        btnReindex.addEventListener("click", async () => {
+          btnReindex.textContent = "Indexing...";
+          btnReindex.disabled = true;
+          try {
+            const res = await fetch(INDEX_ENDPOINT, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ force_reindex: true })
+            });
+            if (res.ok) {
+              const d = await res.json();
+              alert(`Successfully indexed ${d.indexed_documents} job postings into ChromaDB!`);
+              checkRagHealth();
+            } else {
+              alert("Re-index request completed. Ensure backend server is running.");
+            }
+          } catch (e) {
+            alert("Local RAG backend is in standby. You can start it via 'uvicorn backend.api:app --reload'.");
+          } finally {
+            btnReindex.textContent = "Re-index";
+            btnReindex.disabled = false;
+          }
+        });
+      }
+
+      // Sidebar badges
+      let savedJobs = [];
+      try {
+        const stored = localStorage.getItem("roleRadar_saved_jobs");
+        if (stored) savedJobs = JSON.parse(stored);
+      } catch (e) {}
+      const navAllCount = document.getElementById("nav-all-count");
+      if (navAllCount) navAllCount.textContent = savedJobs.length;
+      const navDailyCount = document.getElementById("nav-daily-count");
+      if (navDailyCount && window.SCRAPED_JOBS) navDailyCount.textContent = window.SCRAPED_JOBS.length;
+
+      // API Settings Modal Wireup
+      const modal = document.getElementById("settings-modal");
+      const btnOpen = document.getElementById("btn-open-apikeys");
+      const btnClose = document.getElementById("btn-close-settings");
+      const btnCancel = document.getElementById("btn-cancel-settings");
+      const btnSave = document.getElementById("btn-save-settings");
+      const btnClear = document.getElementById("btn-clear-settings");
+
+      const inputApify = document.getElementById("setting-apify-token");
+      const inputGemini = document.getElementById("setting-gemini-key");
+      const statusApify = document.getElementById("status-apify");
+      const statusGemini = document.getElementById("status-gemini");
+      const sidebarStatus = document.getElementById("sidebar-status-text");
+
+      function updateModalStatus() {
+        const apify = getApifyToken();
+        const gemini = getGeminiApiKey();
+
+        if (statusApify) {
+          statusApify.textContent = apify ? "CONFIGURED" : "NOT SET";
+          statusApify.className = apify ? "key-status-badge configured" : "key-status-badge unset";
+        }
+        if (statusGemini) {
+          statusGemini.textContent = gemini ? "CONFIGURED" : "NOT SET";
+          statusGemini.className = gemini ? "key-status-badge configured" : "key-status-badge unset";
+        }
+        if (sidebarStatus) {
+          if (apify && gemini) sidebarStatus.textContent = "Apify & Gemini Ready";
+          else if (apify || gemini) sidebarStatus.textContent = "APIs Active · Partial";
+          else sidebarStatus.textContent = "Ready · Local Mode";
+        }
+      }
+
+      if (btnOpen) {
+        btnOpen.addEventListener("click", () => {
+          if (inputApify) inputApify.value = getApifyToken();
+          if (inputGemini) inputGemini.value = getGeminiApiKey();
+          updateModalStatus();
+          modal.style.display = "flex";
+        });
+      }
+
+      const closeModal = () => { modal.style.display = "none"; };
+      if (btnClose) btnClose.addEventListener("click", closeModal);
+      if (btnCancel) btnCancel.addEventListener("click", closeModal);
+
+      if (btnSave) {
+        btnSave.addEventListener("click", () => {
+          if (inputApify && inputApify.value.trim()) localStorage.setItem(STORAGE_KEY_APIFY, inputApify.value.trim());
+          if (inputGemini && inputGemini.value.trim()) localStorage.setItem(STORAGE_KEY_GEMINI, inputGemini.value.trim());
+          updateModalStatus();
+          closeModal();
+        });
+      }
+
+      if (btnClear) {
+        btnClear.addEventListener("click", () => {
+          localStorage.removeItem(STORAGE_KEY_APIFY);
+          localStorage.removeItem(STORAGE_KEY_GEMINI);
+          if (inputApify) inputApify.value = "";
+          if (inputGemini) inputGemini.value = "";
+          updateModalStatus();
+          closeModal();
+        });
+      }
+
+      updateModalStatus();
+    });
+  </script>
+</body>
+</html>

@@ -916,10 +916,30 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
       return;
     }
 
+    // Check saved IDs for persistent save button states
+    let savedIds = new Set();
+    try {
+      const stored = localStorage.getItem("roleRadar_saved_jobs");
+      if (stored) {
+        const arr = JSON.parse(stored);
+        if (Array.isArray(arr)) savedIds = new Set(arr.map(j => String(j.id)));
+      }
+    } catch (e) {}
+
     jobListEl.innerHTML = filtered.map(job => {
       const meta = getPlatformMeta(job.source);
       const isSelected = String(job.id) === String(selectedJobId);
       const salaryHtml = job.salary ? `<span class="job-salary-tag">${escapeHtml(job.salary)}</span>` : "";
+      const isSaved = savedIds.has(String(job.id));
+
+      const actionButtonHtml = `
+        <button type="button" class="btn-job-action btn-job-save ${isSaved ? "saved" : ""}" onclick="handleJobSave(event, '${job.id}')" title="${isSaved ? "Saved to All Jobs" : "Save job to All Jobs"}">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="${isSaved ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>${isSaved ? "Saved" : "Save"}</span>
+        </button>
+      `;
 
       return `
         <div class="job-item ${isSelected ? "selected" : ""}" data-id="${job.id}" onclick="selectJob('${job.id}')">
@@ -931,8 +951,8 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
             </span>
           </div>
           <div class="job-item-company">${escapeHtml(job.company)} · ${escapeHtml(job.location)}</div>
+          ${job.salary ? `<div class="job-item-salary">${salaryHtml}</div>` : ""}
           <div class="job-item-meta">
-            ${salaryHtml}
             <span class="job-item-date">${escapeHtml(formatDate(job.date))}</span>
             <a href="${escapeHtml(job.url || "#")}" target="_blank" rel="noopener" class="job-item-ext-link" onclick="event.stopPropagation()" title="Open posting in new tab">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -941,9 +961,11 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
                 <line x1="10" y1="14" x2="21" y2="3"></line>
               </svg>
             </a>
+            ${actionButtonHtml}
           </div>
         </div>
-      `;    }).join("");
+      `;
+    }).join("");
   }
 
   // Filter & Sort
@@ -1022,6 +1044,23 @@ Return ONLY a valid JSON object matching this schema without markdown fences:
       } else {
         statusGemini.textContent = "NOT SET";
         statusGemini.className = "key-status-badge unset";
+      }
+    }
+
+    const sidebarStatus = document.getElementById("sidebar-status-text");
+    if (sidebarStatus) {
+      if (apifyToken && geminiKey) sidebarStatus.textContent = "Apify & Gemini Ready";
+      else if (apifyToken || geminiKey) sidebarStatus.textContent = "APIs Active · Partial";
+      else sidebarStatus.textContent = "Ready · Local Mode";
+    }
+
+    const allBadge = document.getElementById("nav-all-count");
+    if (allBadge) {
+      try {
+        const stored = localStorage.getItem("roleRadar_saved_jobs");
+        allBadge.textContent = stored ? JSON.parse(stored).length : "0";
+      } catch (e) {
+        allBadge.textContent = "0";
       }
     }
   }
@@ -1206,10 +1245,85 @@ function selectJob(jobId) {
     setTimeout(() => { copyBtn.textContent = orig; }, 1500);
   };
 
+  // Detail Save Button
+  const detailSaveBtn = document.getElementById("detail-save-btn");
+  if (detailSaveBtn) {
+    let saved = false;
+    try {
+      const stored = localStorage.getItem("roleRadar_saved_jobs");
+      if (stored) {
+        const arr = JSON.parse(stored);
+        if (Array.isArray(arr)) saved = arr.some(j => String(j.id) === String(job.id));
+      }
+    } catch (e) {}
+    detailSaveBtn.classList.toggle("saved", saved);
+    detailSaveBtn.title = saved ? "Saved to All Jobs" : "Save job to All Jobs";
+    const span = detailSaveBtn.querySelector("span");
+    if (span) span.textContent = saved ? "Saved" : "Save Job";
+    const svg = detailSaveBtn.querySelector("svg");
+    if (svg) svg.setAttribute("fill", saved ? "currentColor" : "none");
+    detailSaveBtn.onclick = function() {
+      window.handleJobSave(null, job.id);
+    };
+  }
+
   // Full Job Description - Render Markdown & Lists
   const descEl = document.getElementById("detail-description");
   descEl.innerHTML = formatJobDescription(job.description, job);
 }
+
+// Persistent Job Save Handler for Search Results
+window.handleJobSave = function(event, jobId) {
+  if (event) event.stopPropagation();
+  const job = jobs.find(j => String(j.id) === String(jobId));
+  if (!job) return;
+
+  let savedJobs = [];
+  try {
+    const stored = localStorage.getItem("roleRadar_saved_jobs");
+    if (stored) savedJobs = JSON.parse(stored);
+  } catch (e) {
+    savedJobs = [];
+  }
+
+  const idx = savedJobs.findIndex(j => String(j.id) === String(jobId));
+  const isNowSaved = idx < 0;
+
+  if (isNowSaved) {
+    savedJobs.unshift(job);
+  } else {
+    savedJobs.splice(idx, 1);
+  }
+
+  try {
+    localStorage.setItem("roleRadar_saved_jobs", JSON.stringify(savedJobs));
+  } catch (e) {}
+
+  // Update button in list card
+  const card = document.querySelector(`.job-item[data-id="${jobId}"]`);
+  if (card) {
+    const btn = card.querySelector(".btn-job-save");
+    if (btn) {
+      btn.classList.toggle("saved", isNowSaved);
+      btn.title = isNowSaved ? "Saved to All Jobs" : "Save job to All Jobs";
+      const span = btn.querySelector("span");
+      if (span) span.textContent = isNowSaved ? "Saved" : "Save";
+      const svg = btn.querySelector("svg");
+      if (svg) svg.setAttribute("fill", isNowSaved ? "currentColor" : "none");
+    }
+  }
+
+  // Update detail save button if currently selected
+  const detailSaveBtn = document.getElementById("detail-save-btn");
+  if (detailSaveBtn && String(selectedJobId) === String(jobId)) {
+    detailSaveBtn.classList.toggle("saved", isNowSaved);
+    detailSaveBtn.title = isNowSaved ? "Saved to All Jobs" : "Save job to All Jobs";
+    const span = detailSaveBtn.querySelector("span");
+    if (span) span.textContent = isNowSaved ? "Saved" : "Save Job";
+    const svg = detailSaveBtn.querySelector("svg");
+    if (svg) svg.setAttribute("fill", isNowSaved ? "currentColor" : "none");
+  }
+};
 
 // Format timestamps or date strings into readable format
 function formatDate(val) {
